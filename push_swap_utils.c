@@ -1,0 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
+/*   Updated: 2023/10/14 16:24:47 by eltouma          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+#include <stdio.h>
+
+t_list	*ft_lstnew(long content)
+{
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}
+
+t_list	*ft_lstlast(t_list *node)
+{
+	if (!node)
+		return (NULL);
+	while (node->next != NULL)
+		node = node->next;
+	return (node);
+}
+
+void	ft_lstadd_back(t_list **list, int nb)
+{
+	t_list	*new_node;
+	t_list	*last_node;
+
+	last_node = ft_lstlast(*list);
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
+		return ;
+	if (!last_node)
+		*list = new_node;
+	else
+		last_node->next = new_node;
+	new_node->content = nb;
+	new_node->next = NULL;
+}
+
+void	ft_lstadd_front(t_list **list, t_list *new_node)
+{
+	if (!list || !new_node)
+		return ;
+	new_node->next = *list;
+	*list = new_node;
+}
+
+long	ft_lstsize(t_list *node)
+{
+	long	i;
+
+	i = 0;
+	if (!node)
+		return (0);
+	while (node)
+	{
+		i += 1;
+		node = node->next;
+	}
+	return (i);
+}
