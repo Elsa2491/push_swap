@@ -64,7 +64,7 @@ int	ft_max(t_list *node)
 	return (max);
 }
 
-void	ft_find_major(t_list *node_a, t_list *node_b)
+void	ft_find_target_node(t_list *node_a, t_list *node_b)
 {
 	t_list	*current_a;
 	t_list	*target_node;
@@ -73,6 +73,7 @@ void	ft_find_major(t_list *node_a, t_list *node_b)
 	while (node_b)
 	{
 		max = INT_MAX;
+		printf("\nmax = %d\n", max);
 		current_a = node_a;
 		while (current_a)
 		{
@@ -83,16 +84,19 @@ void	ft_find_major(t_list *node_a, t_list *node_b)
 			}
 			current_a = current_a->next;
 		}
-//		if (LONG_MAX == majorant)
 		if (node_b->content > ft_max(node_a))
+		{
+			printf("%d > %d\n", node_b->content, ft_max(node_a));
 			node_b->target = ft_find_min_node(node_a);
+		}
 		else
+		{
+			printf("%d < %d\n", node_b->content, ft_max(node_a));
 			node_b->target = target_node;
+		}
 		printf("target_node de %d est %d\n", node_b->content, node_b->target->content); 
 		node_b = node_b->next;
 	}
-//	printf("node->targt_>content %d\n", node_b->target->content);
-//	return (node_b->target->content);
 }
 
 int	ft_find_index(t_list *node, int index)
@@ -155,6 +159,18 @@ long	ft_find_median(t_list *node)
 	return (result);
 }
 */
+void	ft_test(t_list **lst_a, t_list **lst_b)
+{
+	t_list	*tmp;
+
+	tmp = *lst_a;
+	while (tmp)
+	{
+		ft_find_target_node(tmp, *lst_b);
+		ft_push(lst_b, &tmp);
+		tmp = tmp->next;
+	}
+}
 
 int	ft_find_median(t_list *node)
 {

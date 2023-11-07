@@ -46,7 +46,6 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
 void	ft_sort_three(t_list **lst);
 int		ft_lstsize(t_list *node);
 char	**ft_split(char *str, char c);
-void	ft_find_major(t_list *node_a, t_list *node_b);
 int		ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
 int		ft_strlen(char *str);
 int		ft_count_words(char *str, char c);
@@ -57,8 +56,9 @@ char	**ft_define_tab(char *str, char c);
 int		ft_is_list_sorted(t_list **lst);
 int		ft_find_index(t_list *node, int index);
 int		ft_find_median(t_list *node);
-void	ft_find_target_node(t_list **lst_a, t_list **lst_b);
+void	ft_find_target_node(t_list *node_a, t_list *node_b);
 long	ft_atol(char *str);
 int		ft_handle_repetitions(t_list *node, int nb);
 void	ft_print_error(void);
+void 	ft_test(t_list **a, t_list **b);
 #endif

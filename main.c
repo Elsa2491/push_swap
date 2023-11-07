@@ -66,7 +66,8 @@ int	main(int argc, char **argv)
 	printf("\n");
 //	ft_find_index(a, ft_lstsize(a) - 1);
 	ft_push_until_three_nodes_left(&a, &b);
-	ft_find_major(a, b);
+	ft_find_target_node(a, b);
+//	ft_test(&a, &b);
 	ft_is_list_sorted(&a);
 	printf("list a\n");
 	ft_print_list(a);
