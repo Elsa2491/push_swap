@@ -80,6 +80,7 @@ void	ft_find_target_node(t_list *node_a, t_list *node_b)
 			if (current_a->content > node_b->content && current_a->content < max)
 			{
 				max = current_a->content;
+				printf("\nmaintenant max = %d\n", max);
 				target_node = current_a;
 			}
 			current_a = current_a->next;
