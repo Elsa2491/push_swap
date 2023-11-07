@@ -68,7 +68,7 @@ void	ft_find_target_node(t_list *node_a, t_list *node_b)
 {
 	t_list	*current_a;
 	t_list	*target_node;
-	int	max;
+	int		max;
 
 	while (node_b)
 	{
