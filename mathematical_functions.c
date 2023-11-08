@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/08 18:32:38 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:38:07 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,18 +131,3 @@ int	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 		node_b = node_b->next;
 	}
 }
-
-void	ft_test(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*tmp;
-
-	tmp = *lst_a;
-	while (tmp)
-	{
-		ft_find_target_node(tmp, *lst_b);
-		ft_push(lst_b, &tmp);
-		tmp = tmp->next;
-	}
-}
-
-

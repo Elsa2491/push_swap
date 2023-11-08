@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/08 18:33:42 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:34:45 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_fill_tab(char *s, char c);
 void	*free_tab(char **tab, int i);
 char	**ft_define_tab(char *str, char c);
 int		ft_is_list_sorted(t_list **lst);
-void		ft_set_index(t_list *node);
+void	ft_set_index(t_list *node);
 int		ft_find_median(t_list *node);
 t_list	*ft_find_target_node(t_list *node_a, t_list *node_b);
 long	ft_atol(char *str);
