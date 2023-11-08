@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/10/18 16:34:50 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:34:06 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,20 @@ void	ft_find_target_node(t_list *node_a, t_list *node_b)
 			if (current_a->content > node_b->content && current_a->content < max)
 			{
 				max = current_a->content;
-				printf("\nmaintenant max = %d\n", max);
+//				printf("\nmaintenant max = %d\n", max);
 				target_node = current_a;
 			}
 			current_a = current_a->next;
 		}
 		if (node_b->content > ft_max(node_a))
 		{
+			printf("max = %d\n", max);
 			printf("%d > %d\n", node_b->content, ft_max(node_a));
 			node_b->target = ft_find_min_node(node_a);
 		}
 		else
 		{
-			printf("%d < %d\n", node_b->content, ft_max(node_a));
+			printf("%d < %d\n", node_b->content, max);
 			node_b->target = target_node;
 		}
 		printf("target_node de %d est %d\n", node_b->content, node_b->target->content); 
@@ -119,14 +120,17 @@ int	ft_find_index(t_list *node, int index)
 
 int	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 {
-	int	result;
-	int	index;
+	int	lst_a_size;
+	int	lst_b_size;
 
-	index = ft_find_index(node_b, ft_lstsize(node_b) - 1);	
-//	result = ft_find_major(node_a, node_b) + index;
-	result = index;
-	printf("result : %d\n", result);
-	return (result);
+	lst_a_size = ft_lstsize(node_a);
+	lst_b_size = ft_lstsize(node_b);
+
+	//while (node_b)
+//	{
+//		b->price = ft_find_index(node_b, lst_b_size);
+		//if (
+//	}
 }
 
 /*
@@ -176,9 +180,10 @@ void	ft_test(t_list **lst_a, t_list **lst_b)
 int	ft_find_median(t_list *node)
 {
 	int	result;
-	int	value;
+//	int	value;
 
 	result = ft_lstsize(node) / 2;
-	value = ft_find_index(node, result);
-	return (value);
+//	value = ft_find_index(node, result);
+//	return (value);
+	return result ;
 }
