@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/10/17 14:18:22 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:09:13 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 typedef struct s_list
 {
 	int				content;
+	int				index;
+	int				price;
 	struct s_list	*target;
 	struct s_list	*next;
 }		t_list;
 
-//int		main(int argc, char **argv);
-//int		main(void);
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *node);
 void	ft_lstadd_back(t_list **list, int nb);
@@ -39,7 +39,7 @@ void	ft_print_list(t_list *node);
 void	ft_swap_first_and_last(t_list **list);
 void	ft_reverse_rotate(t_list **list);
 void	ft_rotate(t_list **list);
-t_list *ft_find_min_node(t_list *node);
+t_list	*ft_find_min_node(t_list *node);
 int		ft_min(t_list *node);
 int		ft_max(t_list *node);
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
@@ -54,11 +54,11 @@ char	*ft_fill_tab(char *s, char c);
 void	*free_tab(char **tab, int i);
 char	**ft_define_tab(char *str, char c);
 int		ft_is_list_sorted(t_list **lst);
-int		ft_find_index(t_list *node, int index);
+void		ft_find_index(t_list *node);
 int		ft_find_median(t_list *node);
-void	ft_find_target_node(t_list *node_a, t_list *node_b);
+t_list	*ft_find_target_node(t_list *node_a, t_list *node_b);
 long	ft_atol(char *str);
 int		ft_handle_repetitions(t_list *node, int nb);
 void	ft_print_error(void);
-void 	ft_test(t_list **a, t_list **b);
+void	ft_test(t_list **a, t_list **b);
 #endif
