@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/08 18:29:44 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:32:38 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,79 +64,23 @@ int	ft_max(t_list *node)
 	return (max);
 }
 
-/*void	ft_find_target_node(t_list *node_a, t_list *node_b)
-{
-	t_list	*current_a;
-	t_list	*target_node;
-	int		max;
-
-	while (node_b)
-	{
-		max = INT_MAX;
-		printf("\nmax = %d\n", max);
-		current_a = node_a;
-		while (current_a)
-		{
-			if (current_a->content > node_b->content && current_a->content < max)
-			{
-				max = current_a->content;
-//				printf("\nmaintenant max = %d\n", max);
-				target_node = current_a;
-			}
-			current_a = current_a->next;
-		}
-		if (node_b->content > ft_max(node_a))
-		{
-			printf("max = %d\n", max);
-			printf("%d > %d\n", node_b->content, ft_max(node_a));
-			node_b->target = ft_find_min_node(node_a);
-		}
-		else
-		{
-			printf("%d < %d\n", node_b->content, max);
-			node_b->target = target_node;
-		}
-		printf("target_node de %d est %d\n", node_b->content, node_b->target->content); 
-		node_b = node_b->next;
-	}
-}*/
-
 t_list	*ft_find_target_node(t_list *node_a, t_list *node_b)
 {
 	t_list	*current_a;
 	t_list	*target_node;
 	int		max;
 
-//	while (node_b)
-//	{
 		max = INT_MAX;
-//		printf("\nmax = %d\n", max);
 		current_a = node_a;
 		while (current_a)
 		{
 			if (current_a->content > node_b->content && current_a->content < max)
 			{
 				max = current_a->content;
-//				printf("\nmaintenant max = %d\n", max);
 				target_node = current_a;
-//				printf("target_node de %d est %d\n", node_b->content, target_node->content); 
 			}
 			current_a = current_a->next;
 		}
-	/*	if (node_b->content > ft_max(node_a))
-		{
-			printf("max = %d\n", max);
-			printf("%d > %d\n", node_b->content, ft_max(node_a));
-			node_b->target = ft_find_min_node(node_a);
-		}
-		else
-		{
-			printf("%d < %d\n", node_b->content, max);
-			node_b->target = target_node;
-		}
-
-		node_b = node_b->next;*/
-//	}
 	return (target_node);
 }
 
@@ -145,7 +89,7 @@ int	ft_find_median(t_list *node)
 	return (ft_lstsize(node) / 2);
 }
 
-void	ft_find_index(t_list *node)
+void	ft_set_index(t_list *node)
 {
 	int	i;
 
@@ -153,7 +97,6 @@ void	ft_find_index(t_list *node)
 	while (node)
 	{
 		node->index = i;
-//		printf("index de %d est %d\n", node->content, node->index);
 		i += 1;
 		node = node->next;
 	}
@@ -168,8 +111,8 @@ int	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	int	median_b;
 	t_list	*target;
 
-	ft_find_index(node_a);
-	ft_find_index(node_b);
+	ft_set_index(node_a);
+	ft_set_index(node_b);
 	lst_a_size = ft_lstsize(node_a);
 	lst_b_size = ft_lstsize(node_b);
 	median_a = ft_find_median(node_a);
@@ -178,9 +121,6 @@ int	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	{
 		target = ft_find_target_node(node_a, node_b);
 		node_b->price = node_b->index;
-//		printf("l'index de %d est %d\n", node_b->content, node_b->price);
-//		printf("mediane %d\n", median_b);
-//		printf("target index : %d\n", target->index);
 		if (node_b->index > median_b)
 			node_b->price = lst_b_size - node_b->index;
 		if (target->index <= median_a)
@@ -192,37 +132,6 @@ int	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	}
 }
 
-/*
-long	ft_find_median(t_list *node)
-{
-	t_list	*ptr1;
-	t_list	*ptr2;
-	t_list	*previous;
-	long	result;
-	long	value;
-
-
-	ptr1 = node;
-	ptr2 = node;
-	previous = node;
-	if (node != NULL)
-	{
-		while (ptr2 != NULL && ptr2->next != NULL)
-		{
-			ptr2 = ptr2->next->next;
-			previous = ptr1;
-			ptr1 = ptr1->next;
-		}
-		if (ptr2 != NULL)
-			result = ptr1->content;
-		else
-			result = (ptr1->content + previous->content) / 2;
-	}
-//	result = (ft_lstsize(node) + 1) / 2;
-	value = ft_find_index(node, result);
-	return (result);
-}
-*/
 void	ft_test(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*tmp;
