@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/08 18:17:05 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:29:44 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ t_list	*ft_find_target_node(t_list *node_a, t_list *node_b)
 //	while (node_b)
 //	{
 		max = INT_MAX;
-		printf("\nmax = %d\n", max);
+//		printf("\nmax = %d\n", max);
 		current_a = node_a;
 		while (current_a)
 		{
@@ -119,7 +119,7 @@ t_list	*ft_find_target_node(t_list *node_a, t_list *node_b)
 				max = current_a->content;
 //				printf("\nmaintenant max = %d\n", max);
 				target_node = current_a;
-				printf("target_node de %d est %d\n", node_b->content, target_node->content); 
+//				printf("target_node de %d est %d\n", node_b->content, target_node->content); 
 			}
 			current_a = current_a->next;
 		}
@@ -166,6 +166,7 @@ int	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	int	lst_b_size;
 	int	median_a;
 	int	median_b;
+	t_list	*target;
 
 	ft_find_index(node_a);
 	ft_find_index(node_b);
@@ -175,15 +176,17 @@ int	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	median_b = ft_find_median(node_b);
 	while (node_b)
 	{
+		target = ft_find_target_node(node_a, node_b);
 		node_b->price = node_b->index;
-		printf("l'index de %d est %d\n", node_b->content, node_b->price);
-		printf("mediane %d\n", median_b);
-		if (node_b->price < median_b)
+//		printf("l'index de %d est %d\n", node_b->content, node_b->price);
+//		printf("mediane %d\n", median_b);
+//		printf("target index : %d\n", target->index);
+		if (node_b->index > median_b)
 			node_b->price = lst_b_size - node_b->index;
-		if (node_b->target->index > median_a)
-			node_b->price += node_b->target->index;
+		if (target->index <= median_a)
+			node_b->price += target->index;
 		else
-			node_b->price += lst_a_size - node_b->target->index;
+			node_b->price += lst_a_size - target->index;
 		printf("cost pour %d est %d\n", node_b->content, node_b->price);
 		node_b = node_b->next;
 	}

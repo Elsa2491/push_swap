@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/08 18:11:22 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:18:20 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	printf("la mediane de a est %d\n", ft_find_median(a));
 	printf("la mediane de b est %d\n", ft_find_median(b));
 	ft_find_target_node(a, b);
-//	ft_find_cheapest_cost(a, b);
+	ft_find_cheapest_cost(a, b);
 	//ft_is_list_sorted(&a);
 	printf("list a\n");
 	ft_print_list(a);
