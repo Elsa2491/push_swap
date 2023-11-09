@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/08 18:34:45 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/09 17:00:30 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
 void	ft_sort_three(t_list **lst);
 int		ft_lstsize(t_list *node);
 char	**ft_split(char *str, char c);
-int		ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
+void		ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
 int		ft_strlen(char *str);
 int		ft_count_words(char *str, char c);
 int		ft_count_size_of_word(char *str, char c);
@@ -59,5 +59,5 @@ t_list	*ft_find_target_node(t_list *node_a, t_list *node_b);
 long	ft_atol(char *str);
 int		ft_handle_repetitions(t_list *node, int nb);
 void	ft_print_error(void);
-void	ft_test(t_list **a, t_list **b);
+void	ft_test(t_list *a, t_list *b);
 #endif
