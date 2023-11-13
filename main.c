@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/10/18 16:54:13 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/13 18:37:16 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,22 @@ int	main(int argc, char **argv)
 	ft_find_target_node(a, b);
 	ft_find_cheapest_cost(a, b);
 	ft_is_list_sorted(&a);
+	printf("\nlist a\n");
+	ft_print_list(a);
+	printf("\n");
+	printf("list b\n");
+	ft_print_list(b);
+	printf("\n\n");
+	ft_birdnest(&a, &b);
+//	ft_test(&a, &b);
+
 	printf("list a\n");
 	ft_print_list(a);
 	printf("\n");
 	printf("list b\n");
 	ft_print_list(b);
 	printf("\n");
+
 }
 
 /*

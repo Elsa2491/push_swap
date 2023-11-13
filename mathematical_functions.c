@@ -6,13 +6,13 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/09 17:08:33 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/13 15:34:38 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_find_min_node(t_list *node)
+t_list	*ft_find_min_cost(t_list *node)
 {
 	int		min;
 	t_list	*min_node;
@@ -22,9 +22,9 @@ t_list	*ft_find_min_node(t_list *node)
 	min = INT_MAX;
 	while (node)
 	{
-		if (min > node->price)
+		if (min > node->total_price)
 		{
-			min = node->price;
+			min = node->total_price;
 			min_node = node;
 		}
 		node = node->next;

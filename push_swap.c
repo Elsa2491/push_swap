@@ -26,18 +26,27 @@ void	ft_swap_first_values(t_list *node)
 void	ft_push(t_list **lst_from, t_list **lst_to_push)
 {
 	t_list	*tmp;
+	t_list	*head_from;
+	t_list	*head_to;
 
 	if (!*lst_from)
 		return ;
-	tmp = (*lst_from)->next;
-	if (!*lst_to_push)
+	head_to = *lst_to_push;
+	head_from = *lst_from;
+	tmp = *lst_from;
+	*lst_from = head_from->next; 
+	if (!head_to)
 	{
-		*lst_to_push = *lst_from;
-		(*lst_to_push)->next = NULL;
+		head_to = tmp;
+		head_to->next = NULL;
+		*lst_to_push = head_to;
 	}
 	else
-		ft_lstadd_front(lst_to_push, *lst_from);
-	*lst_from = tmp;
+	{
+		tmp->next = head_to;
+		*lst_to_push = tmp;
+	}
+	//*lst_from = tmp;
 }
 
 void	ft_print_list(t_list *node)
