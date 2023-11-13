@@ -22,7 +22,9 @@ typedef struct s_list
 {
 	int				content;
 	int				index;
-	int				price;
+	int				a_price
+	int				b_price;
+	int				total_price;
 	struct s_list	*next;
 }		t_list;
 

@@ -29,7 +29,6 @@ t_list	*ft_find_target_node(t_list *node_a, t_list *node_b)
 		}
 		current_a = current_a->next;
 	}
-//	printf("\ntarget_node de %d est %d\n", node_b->content, target_node->content);
 	return (target_node);
 }
 
@@ -50,6 +49,7 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	while (node_b)
 	{
 		target = ft_find_target_node(node_a, node_b);
+		printf("\ntarget_node de %d est %d\n", node_b->content, target->content);
 		node_b->price = node_b->index;
 		if (node_b->index > median_b)
 			node_b->price = lst_b_size - node_b->index;
@@ -57,7 +57,7 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 			node_b->price += target->index;
 		else
 			node_b->price += lst_a_size - target->index;
-//		printf("cost pour %d est %d\n", node_b->content, node_b->price);
+		printf("cost pour %d est %d\n", node_b->content, node_b->price);
 		node_b = node_b->next;
 	}
 }
