@@ -22,9 +22,9 @@ t_list	*ft_find_min_cost(t_list *node)
 	min = INT_MAX;
 	while (node)
 	{
-		if (min > node->total_price)
+		if (min > node->content)
 		{
-			min = node->total_price;
+			min = node->content;
 			min_node = node;
 		}
 		node = node->next;

@@ -79,14 +79,14 @@ int	main(int argc, char **argv)
 	printf("\n\n");
 	ft_birdnest(&a, &b);
 //	ft_test(&a, &b);
-
+/*
 	printf("list a\n");
 	ft_print_list(a);
 	printf("\n");
 	printf("list b\n");
 	ft_print_list(b);
 	printf("\n");
-
+*/
 }
 
 /*
