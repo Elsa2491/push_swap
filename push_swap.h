@@ -64,6 +64,8 @@ int		ft_is_list_sorted(t_list **lst);
 int		ft_min(t_list *node);
 int		ft_max(t_list *node);
 
+void	ft_initialize_nodes(t_list *node_a, t_list *node_b);
+void	ft_set_current_position(t_list *node);
 
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
 void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
