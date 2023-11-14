@@ -130,6 +130,7 @@ void	ft_move_nodes(t_list **lst_a, t_list **lst_b)
 	}
 	else if (!(cheapest_node->above_median) && !(cheapest_node->target->above_median))
 	{
+		printf("COUCOU PETITE PERRUCHE\n");
 		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->above_median));
 		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->target->above_median));
 		ft_reverse_rotate_both(lst_a, lst_b, cheapest_node);
