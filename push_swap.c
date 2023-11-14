@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:30:05 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/14 14:09:10 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/14 16:53:35 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_print_list(t_list *node)
 void	ft_set_current_position(t_list *node)
 {
 	int	i;
-//	int	above_median;
 	int	median;
 
 	i = 0;

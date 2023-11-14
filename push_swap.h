@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/13 18:13:14 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/14 16:57:21 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_list
 //	int				b_price;
 	int				price;
 	struct s_list	*target;
-//	struct s_list	*previous;
+	struct s_list	*previous;
 	struct s_list	*next;
 }		t_list;
 

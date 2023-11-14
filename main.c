@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/13 18:37:16 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/14 16:16:36 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	ft_print_list(b);
 	printf("\n");
 	printf("\n");
-	if (ft_lstsize(a) != 3 || ft_lstsize(a) != 5)
+	if (ft_lstsize(a) != 3)
 		ft_push_until_three_nodes_left(&a, &b);
 	printf("\n");
 /*	ft_set_index(a);

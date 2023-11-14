@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/10/14 16:24:47 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/14 17:27:36 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ t_list	*ft_lstnew(int content)
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
+	new_node->index = 0;
+	new_node->above_median = 0;
+	new_node->price = 0;
+	new_node->target = NULL;
+	new_node->previous = NULL;
 	new_node->next = NULL;
 	return (new_node);
 }
@@ -42,15 +47,12 @@ void	ft_lstadd_back(t_list **list, int nb)
 	if (!list)
 		return ;
 	last_node = ft_lstlast(*list);
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return ;
+	new_node = ft_lstnew(nb);
 	if (!last_node)
 		*list = new_node;
 	else
 		last_node->next = new_node;
-	new_node->content = nb;
-	new_node->next = NULL;
+	new_node->index = last_node->index + 1;
 }
 
 void	ft_lstadd_front(t_list **list, t_list *new_node)
