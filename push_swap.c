@@ -122,13 +122,14 @@ void	ft_move_nodes(t_list **lst_a, t_list **lst_b)
 	t_list	*cheapest_node;
 
 	cheapest_node = ft_return_cheapest(*lst_b);
-	if (cheapest_node->above_median && cheapest_node->target->above_median)
+	if (cheapest_node->price && cheapest_node->above_median && cheapest_node->target->above_median)
 	{
+		printf("cheapest_node->price 😍 == %d\n", cheapest_node->price);
 		printf("cheapest_node->above_median 😍 == %d\n", cheapest_node->above_median);
-		printf("cheapest_node->above_median 😍 == %d\n", cheapest_node->target->above_median);
+		printf("cheapest_node->target->above_median 😍 == %d\n", cheapest_node->target->above_median);
 		ft_rotate_both(lst_a, lst_b, cheapest_node);
 	}
-	else if (!(cheapest_node->above_median) && !(cheapest_node->target->above_median))
+	else if (cheapest_node->price && !(cheapest_node->above_median) && !(cheapest_node->target->above_median))
 	{
 		printf("COUCOU PETITE PERRUCHE\n");
 		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->above_median));
@@ -177,7 +178,7 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 	while (*lst_b)
 	{
 		ft_initialize_nodes(*lst_a, *lst_b);
-	//	ft_move_nodes(lst_a, lst_b);
+		ft_move_nodes(lst_a, lst_b);
 		*lst_b = (*lst_b)->next;
 	}
 	ft_set_current_position(*lst_a);
