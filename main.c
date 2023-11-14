@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 	printf("list b\n");
 	ft_print_list(b);
 	printf("\n\n");
-	ft_birdnest(&a, &b);
+//	ft_birdnest(&a, &b);
 //	ft_test(&a, &b);
 /*
 	printf("list a\n");
