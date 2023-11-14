@@ -62,17 +62,20 @@ int	main(int argc, char **argv)
 	ft_print_list(b);
 	printf("\n");
 	printf("\n");
-	ft_is_list_sorted(&a);
+	if (ft_lstsize(a) != 3 || ft_lstsize(a) != 5)
+		ft_push_until_three_nodes_left(&a, &b);
 	printf("\n");
-	ft_set_index(a);
-	ft_push_until_three_nodes_left(&a, &b);
+/*	ft_set_index(a);
+
 	printf("Mediane de a : %d\n", ft_find_median(a));
 	printf("Mediane de b : %d\n", ft_find_median(b));
 	ft_find_target_node(a, b);
 	ft_find_cheapest_cost(a, b);
 	ft_is_list_sorted(&a);
+*/
 	printf("\nlist a\n");
 	ft_print_list(a);
+	ft_is_list_sorted(&a);
 	printf("\n");
 	printf("list b\n");
 	ft_print_list(b);

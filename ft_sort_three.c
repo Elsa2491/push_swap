@@ -44,6 +44,6 @@ void	ft_sort_three(t_list **lst)
 	else if ((*lst)->content < (*lst)->next->content
 		&& (*lst)->next->content == max)
 		ft_reverse_rotate(lst);
-	if ((*lst)->content != ft_min(*lst))
+	if ((*lst)->content != min)
 		ft_swap_first_values(*lst);
 }

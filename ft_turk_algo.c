@@ -27,6 +27,7 @@ t_list	*ft_find_target_node(t_list *node_a, t_list *node_b)
 			max = current_a->content;
 			target_node = current_a;
 		}
+//		printf("\ntarget_node de %d est %d\n", node_b->content, current_a->content);
 		current_a = current_a->next;
 	}
 	return (target_node);
