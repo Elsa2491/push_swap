@@ -64,8 +64,10 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 		size = ft_lstsize(*lst_a);
 		while (size > 3)
 		{
-			if ((*lst_a)->content == ft_max(*lst_a))
-				ft_rotate(lst_a);
+			if ((*lst_a)->content < ft_min(*lst_b))
+				ft_reverse_rotate(lst_a);
+//			if ((*lst_a)->content == ft_max(*lst_a))
+//				ft_rotate(lst_a);
 			ft_push(lst_a, lst_b);
 			size -= 1;
 		}

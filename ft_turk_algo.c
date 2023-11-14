@@ -60,14 +60,14 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 		if (node_b->index > median_b)
 		{
 			node_b->b_price = lst_b_size - node_b->index;
-			node_b->b_price *= -1;
+//			node_b->b_price *= -1;
 		}
 		if (node_b->target->index <= median_a)
 			node_b->a_price += node_b->target->index;
 		else
 		{
 			node_b->a_price += lst_a_size - node_b->target->index;
-			node_b->a_price *= -1;
+//			node_b->a_price *= -1;
 		}
 //		node_b->total_price = ft_set_positive(node_b->a_price) + ft_set_positive(node_b->b_price);
 		printf("cost pour b %d est %d\n", node_b->content, node_b->b_price);
@@ -87,61 +87,10 @@ void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b)
 	ft_reverse_rotate(lst_a);
 	ft_reverse_rotate(lst_b);
 }
-/*
-void	ft_test(t_list **node_a, t_list **node_b)
-{
-	t_list	*tmp;
-	t_list *a;
-	t_list *b;
-	int		median_a;
-	int		median_b;
-	t_list	*target;
-
-	a = *node_a;
-	b =*node_b;
-	median_a = ft_find_median(a);
-	median_b = ft_find_median(b);
-//	while (b)
-//	{
-		ft_find_cheapest_cost(a, b);
-		tmp = ft_find_min_cost(b);
-		printf("\nbonjour antoine : b|%d| a|%d| target|%d|\n", tmp->b_price, tmp->a_price, tmp->target->index);
-		while (tmp->b_price < ft_find_median(b) && tmp->target->index < ft_find_median(a))
-		{
-			printf("Hello world 😍\n");
-			printf("b_price = %d\ntarget_index = %d\n", tmp->b_price, tmp->target->index);
-			ft_rotate_both(&a, &b);
-		//	tmp->b_price -= 1;
-//			tmp->target->index -= 1;
-		}
-		while (tmp->b_price > ft_find_median(b) && tmp->target->index > ft_find_median(a))
-		{
-			printf("Hello world 😍😍\n");
-			printf("b_price = %d\ntarget_index = %d\n", tmp->b_price, tmp->target->index);
-			ft_reverse_rotate(&a);
-			ft_rotate(&b);
-		//	tmp->b_price -= 1;
-//			tmp->target->index -= 1;
-		}
-		while (tmp->b_price < ft_find_median(b) && tmp->target->index > ft_find_median(a))
-		{
-			printf("Hello world 😍😍😍\n");
-			printf("b_price = %d\ntarget_index = %d\n", tmp->b_price, tmp->target->index);
-			ft_reverse_rotate(&b);
-			ft_rotate(&a);
-		}
-		printf("c\n");
-		printf("COUCOU\n");
-		ft_push(&b, &a);
-		printf("mediane de a vaut maintenat %d\n", ft_find_median(a));
-		printf("mediane de b vaut maintenat %d\n", ft_find_median(b));
-		(printf("-6-\nA :\n"), ft_print_list(a), ((b) ? printf("\nB :\n"), ft_print_list(b) : printf("b est vide\n\n")), printf("\n"));
-//		b = b->next;
-//	}
-}*/
 
 void	ft_birdnest2(t_list **node_a, t_list **node_b, t_list **tmp);
 
+void	finish_rotation(t_list **stack, t_list *top_node, char stack_name);
 void	ft_birdnest(t_list **node_a, t_list **node_b)
 {
 	t_list	*tmp;
@@ -158,7 +107,17 @@ void	ft_birdnest(t_list **node_a, t_list **node_b)
 		ft_find_cheapest_cost(*node_a, *node_b);
 		tmp = ft_find_min_cost(*node_b);
 		printf("bonjour antoine : b|%d| a|%d| target de b|%d|\n", tmp->b_price, tmp->a_price, (*node_b)->target->content);
-		ft_birdnest2(node_a, node_b, &tmp);
+	while (*node_b)
+	{
+	if (tmp->index > ft_find_median(*node_b) && tmp->target->index > ft_find_median(*node_a))
+		ft_rotate_both(node_a, node_b);
+	else if (tmp->index < ft_find_median(*node_b) && tmp->target->index < ft_find_median(*node_a))
+		ft_reverse_rotate_both(node_a, node_b);
+	finish_rotation(node_b, *node_b, 'b');
+	finish_rotation(node_a, *node_a, 'a');
+	ft_push(node_b, node_a);
+	(printf("-6-\nA :\n"), ft_print_list(*node_a), ((*node_b) ? printf("\nB :\n"), ft_print_list(*node_b) : printf("b est vide\n\n")), printf("\n"));
+}
 	}
 }
 
@@ -194,8 +153,8 @@ void	ft_birdnest2(t_list **a, t_list **b, t_list **tmp)
 	median_a = ft_find_median(a);
 	median_b = ft_find_median(b);
 */
-//	while (*b)
-//	{
+	while (*b)
+	{
 	if ((*tmp)->index > ft_find_median(*b) && (*tmp)->target->index > ft_find_median(*a))
 		ft_rotate_both(a, b);
 	else if ((*tmp)->index < ft_find_median(*b) && (*tmp)->target->index < ft_find_median(*a))
@@ -204,7 +163,7 @@ void	ft_birdnest2(t_list **a, t_list **b, t_list **tmp)
 	finish_rotation(a, *a, 'a');
 	ft_push(b, a);
 	(printf("-6-\nA :\n"), ft_print_list(*a), ((*b) ? printf("\nB :\n"), ft_print_list(*b) : printf("b est vide\n\n")), printf("\n"));
-//}
+}
 }
 /*
 void	ft_birdnest2(t_list **a, t_list **b, t_list **tmp)
