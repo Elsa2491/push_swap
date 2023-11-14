@@ -57,21 +57,25 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	{
 		node_b->target = ft_find_target_node(node_a, node_b);
 		printf("\ntarget_node de %d est %d\n", node_b->content, node_b->target->content);
-		node_b->b_price = node_b->index;
+		//node_b->b_price = node_b->index;
+		node_b->price = node_b->index;
 		if (node_b->index > median_b)
 		{
-			node_b->b_price = lst_b_size - node_b->index;
-//			node_b->b_price *= -1;
+		//	node_b->b_price = lst_b_size - node_b->index;
+			node_b->price = lst_b_size - node_b->index;
+		//	node_b->b_price *= -1;
 		}
 		if (node_b->target->index <= median_a)
-			node_b->a_price += node_b->target->index;
+			//node_b->a_price += node_b->target->index;
+			node_b->price += node_b->target->index;
 		else
 		{
-			node_b->a_price += lst_a_size - node_b->target->index;
-//			node_b->a_price *= -1;
+			//node_b->a_price += lst_a_size - node_b->target->index;
+			node_b->price += lst_a_size - node_b->target->index;
+		//	node_b->a_price *= -1;
 		}
 //		node_b->total_price = ft_set_positive(node_b->a_price) + ft_set_positive(node_b->b_price);
-		printf("cost pour b %d est %d\n", node_b->content, node_b->b_price);
+		printf("cost pour b %d est %d\n", node_b->content, node_b->price);
 //		printf("cost pour %d est %d\n", node_b->content, node_b->total_price);
 		node_b = node_b->next;
 	}

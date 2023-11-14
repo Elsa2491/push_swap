@@ -67,7 +67,7 @@ void	ft_set_current_position(t_list *node)
 		if (i <= median)
 			above_median = 1;
 		else
-			above_median = -1;
+			above_median = 0;
 		printf("pour %d, above_median est %d\n", node->content, above_median);
 		node = node->next;
 		i += 1;
@@ -80,8 +80,56 @@ void	ft_initialize_nodes(t_list *node_a, t_list *node_b)
 	ft_set_current_position(node_b);
 	ft_find_target_node(node_a, node_b);
 	ft_find_cheapest_cost(node_a, node_b);
+	ft_find_min_price(node_b);
 }
 
+void	finish_rotation(t_list **stack, t_list *top_node, char stack_name)
+{
+	while (*stack != top_node)
+	{
+		if (stack_name == 'a')
+		{
+			if (top_node->index < ft_find_median(*stack))
+				ft_rotate(stack);
+			else
+				ft_reverse_rotate(stack);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->index < ft_find_median(*stack))
+				ft_rotate(stack);
+			else
+				ft_reverse_rotate(stack);
+		}
+	}
+}
+
+t_list	*ft_return_cheapest(t_list *stack)
+{
+	if (NULL == stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->price)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
+
+void	ft_move_nodes(t_list **lst_a, t_list **lst_b)
+{
+	t_list	*cheapest_node;
+
+	cheapest_node = ft_return_cheapest(*lst_b);
+	if (cheapest_node->index > ft_find_median(*lst_b) && cheapest_node->target->index > ft_find_median(*lst_a))
+		ft_rotate_both(lst_a, lst_b);
+	else if (cheapest_node->index < ft_find_median(*lst_b) && cheapest_node->index < ft_find_median(*lst_a))
+		ft_reverse_rotate_both(lst_a, lst_b);
+	finish_rotation(lst_b, cheapest_node, 'b');
+	finish_rotation(lst_a, cheapest_node, 'a');
+	ft_push(lst_a, lst_b);
+}
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 {
 	int	size;
@@ -106,9 +154,10 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 		}
 		ft_sort_three(lst_a);
 	}
-//	while (*lst_b)
-//	{
+	while (*lst_b)
+	{
 		ft_initialize_nodes(*lst_a, *lst_b);
-//		(*lst_b) = (*lst_b)->next;
-//	}
+//		ft_move_nodes(lst_a, lst_b);
+		*lst_b = (*lst_b)->next;
+	}
 }

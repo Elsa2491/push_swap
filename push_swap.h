@@ -24,7 +24,7 @@ typedef struct s_list
 	int				index;
 	int				a_price;
 	int				b_price;
-	int				total_price;
+	int				price;
 	struct s_list	*target;
 	struct s_list	*next;
 }		t_list;
@@ -66,11 +66,14 @@ int		ft_max(t_list *node);
 
 void	ft_initialize_nodes(t_list *node_a, t_list *node_b);
 void	ft_set_current_position(t_list *node);
+int		ft_set_positive(int nb);
+void	ft_move_nodes(t_list **lst_a, t_list **lst_b);
 
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
 void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
 void	ft_set_index(t_list *node);
 t_list	*ft_find_min_node(t_list *node);
+t_list	*ft_find_min_price(t_list *node_b);
 int		ft_find_median(t_list *node);
 t_list	*ft_find_target_node(t_list *node_a, t_list *node_b);
 
