@@ -39,36 +39,42 @@ void	ft_swap_first_values(t_list *node);
 void	ft_push(t_list **lst_from, t_list **lst_to_push);
 void	ft_print_list(t_list *node);
 void	ft_swap_first_and_last(t_list **list);
+
+
 void	ft_reverse_rotate(t_list **list);
 void	ft_rotate(t_list **list);
 void	ft_rotate_both(t_list **lst_a, t_list **lst_b);
 void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b);
-t_list	*ft_find_min_cost(t_list *node);
-int		ft_min(t_list *node);
-int		ft_max(t_list *node);
-void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
-void	ft_sort_three(t_list **lst);
-int		ft_lstsize(t_list *node);
+
+
 char	**ft_split(char *str, char c);
-void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
 int		ft_strlen(char *str);
 int		ft_count_words(char *str, char c);
 int		ft_count_size_of_word(char *str, char c);
 char	*ft_fill_tab(char *s, char c);
 void	*free_tab(char **tab, int i);
 char	**ft_define_tab(char *str, char c);
+
+
+int		ft_lstsize(t_list *node);
+void	ft_sort_three(t_list **lst);
 int		ft_is_list_sorted(t_list **lst);
+
+
+int		ft_min(t_list *node);
+int		ft_max(t_list *node);
+
+
+void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
+void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
 void	ft_set_index(t_list *node);
+t_list	*ft_find_min_node(t_list *node);
 int		ft_find_median(t_list *node);
 t_list	*ft_find_target_node(t_list *node_a, t_list *node_b);
+
+
 long	ft_atol(char *str);
 int		ft_handle_repetitions(t_list *node, int nb);
 void	ft_print_error(void);
-void	ft_test(t_list **lst_a, t_list **lst_b);
-
-
-//tsais
-void	ft_birdnest2(t_list **a, t_list **b, t_list **tmp);
-void	ft_birdnest(t_list **node_a, t_list **node_b);
 
 #endif

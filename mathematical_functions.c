@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_list	*ft_find_min_cost(t_list *node)
+t_list	*ft_find_min_node(t_list *node)
 {
 	int		min;
 	t_list	*min_node;
