@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:30:05 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/09 18:05:55 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/14 14:09:10 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 	while (*lst_b)
 	{
 		ft_initialize_nodes(*lst_a, *lst_b);
-		ft_move_nodes(lst_a, lst_b);
+//		ft_move_nodes(lst_a, lst_b);
 		*lst_b = (*lst_b)->next;
 	}
 	ft_set_current_position(*lst_a);
