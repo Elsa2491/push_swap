@@ -132,9 +132,18 @@ void	ft_move_nodes(t_list **lst_a, t_list **lst_b)
 	{
 		printf("COUCOU PETITE PERRUCHE\n");
 		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->above_median));
-		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->target->above_median));
+		printf("!cheapest_node->target->above_median 🫧 == %d\n", !(cheapest_node->target->above_median));
 		ft_reverse_rotate_both(lst_a, lst_b, cheapest_node);
 	}
+/*	else if (!(cheapest_node->above_median) || !(cheapest_node->target->above_median))
+	{
+		printf("COUCOU PETITE PERRUCHE\n");
+		printf("!cheapest_node->above_median *️⃣ == %d\n", !(cheapest_node->above_median));
+		printf("!cheapest_node->target->above_median *️⃣ == %d\n", !(cheapest_node->target->above_median));
+//		ft_rotate(lst_b);
+//		ft_reverse_rotate_both(lst_a, lst_b, cheapest_node);
+		ft_reverse_rotate(lst_a);
+	}*/
 	finish_rotation(lst_b, cheapest_node, 'b');
 	finish_rotation(lst_a, cheapest_node->target, 'a');
 	ft_push(lst_b, lst_a);
@@ -158,8 +167,8 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 		size = ft_lstsize(*lst_a);
 		while (size > 3)
 		{
-			if ((*lst_a)->content == ft_max(*lst_a))
-				ft_rotate(lst_a);
+		//	if ((*lst_a)->content == ft_max(*lst_a))
+		//		ft_rotate(lst_a);
 			ft_push(lst_a, lst_b);
 			size -= 1;
 		}
@@ -168,7 +177,8 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 	while (*lst_b)
 	{
 		ft_initialize_nodes(*lst_a, *lst_b);
-		ft_move_nodes(lst_a, lst_b);
+	//	ft_move_nodes(lst_a, lst_b);
+		*lst_b = (*lst_b)->next;
 	}
 	ft_set_current_position(*lst_a);
 	smallest = ft_find_min_node(*lst_a);

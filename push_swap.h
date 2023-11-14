@@ -27,6 +27,7 @@ typedef struct s_list
 //	int				b_price;
 	int				price;
 	struct s_list	*target;
+//	struct s_list	*previous;
 	struct s_list	*next;
 }		t_list;
 

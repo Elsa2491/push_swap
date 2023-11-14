@@ -75,7 +75,7 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 		//	node_b->a_price *= -1;
 		}
 //		node_b->total_price = ft_set_positive(node_b->a_price) + ft_set_positive(node_b->b_price);
-		printf("cost pour b %d est %d\n", node_b->content, node_b->price);
+		printf("cost pour %d est %d\n", node_b->content, node_b->price);
 //		printf("cost pour %d est %d\n", node_b->content, node_b->total_price);
 		node_b = node_b->next;
 	}

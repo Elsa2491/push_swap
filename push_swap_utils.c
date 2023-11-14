@@ -39,6 +39,8 @@ void	ft_lstadd_back(t_list **list, int nb)
 	t_list	*new_node;
 	t_list	*last_node;
 
+	if (!list)
+		return ;
 	last_node = ft_lstlast(*list);
 	new_node = malloc(sizeof(t_list));
 	if (!new_node)
