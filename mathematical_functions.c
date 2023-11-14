@@ -40,7 +40,6 @@ t_list	*ft_find_min_price(t_list *node)
 	if (!node)
 		return (NULL);
 	min = INT_MAX;
-	printf("b->price est %d\n", node->price);
 	while (node)
 	{
 		if (min > node->price)
@@ -48,7 +47,6 @@ t_list	*ft_find_min_price(t_list *node)
 			min = node->price;
 			min_price = node;
 		}
-		printf("cheapest est %d\n", min_price->content);
 		node = node->next;
 	}
 	return (min_price);

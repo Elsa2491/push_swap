@@ -54,7 +54,7 @@ void	ft_print_list(t_list *node)
 void	ft_set_current_position(t_list *node)
 {
 	int	i;
-	int	above_median;
+//	int	above_median;
 	int	median;
 
 	i = 0;
@@ -65,10 +65,10 @@ void	ft_set_current_position(t_list *node)
 	{
 		node->index = i;
 		if (i <= median)
-			above_median = 1;
+			node->above_median = 1;
 		else
-			above_median = 0;
-		printf("pour %d, above_median est %d\n", node->content, above_median);
+			node->above_median = 0;
+//		printf("pour %d, above_median est %d\n", node->content, above_median);
 		node = node->next;
 		i += 1;
 	}
@@ -122,20 +122,28 @@ void	ft_move_nodes(t_list **lst_a, t_list **lst_b)
 	t_list	*cheapest_node;
 
 	cheapest_node = ft_return_cheapest(*lst_b);
-	if (cheapest_node->index > ft_find_median(*lst_b) && cheapest_node->target->index > ft_find_median(*lst_a))
-		ft_rotate_both(lst_a, lst_b);
-	else if (cheapest_node->index < ft_find_median(*lst_b) && cheapest_node->index < ft_find_median(*lst_a))
-		ft_reverse_rotate_both(lst_a, lst_b);
+	if (cheapest_node->above_median && cheapest_node->target->above_median)
+	{
+		printf("cheapest_node->above_median 😍 == %d\n", cheapest_node->above_median);
+		printf("cheapest_node->above_median 😍 == %d\n", cheapest_node->target->above_median);
+		ft_rotate_both(lst_a, lst_b, cheapest_node);
+	}
+	else if (!(cheapest_node->above_median) && !(cheapest_node->target->above_median))
+	{
+		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->above_median));
+		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->target->above_median));
+		ft_reverse_rotate_both(lst_a, lst_b, cheapest_node);
+	}
 	finish_rotation(lst_b, cheapest_node, 'b');
-	finish_rotation(lst_a, cheapest_node, 'a');
-	ft_push(lst_a, lst_b);
+	finish_rotation(lst_a, cheapest_node->target, 'a');
+	ft_push(lst_b, lst_a);
 }
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 {
 	int	size;
+	t_list	*smallest;
 
 	size = ft_lstsize(*lst_a);
-
 	if (size == 5)
 	{
 		printf("La taille de la liste est de 5, déso\n");
@@ -149,6 +157,8 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 		size = ft_lstsize(*lst_a);
 		while (size > 3)
 		{
+			if ((*lst_a)->content == ft_max(*lst_a))
+				ft_rotate(lst_a);
 			ft_push(lst_a, lst_b);
 			size -= 1;
 		}
@@ -157,7 +167,14 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 	while (*lst_b)
 	{
 		ft_initialize_nodes(*lst_a, *lst_b);
-//		ft_move_nodes(lst_a, lst_b);
-		*lst_b = (*lst_b)->next;
+		ft_move_nodes(lst_a, lst_b);
 	}
+	ft_set_current_position(*lst_a);
+	smallest = ft_find_min_node(*lst_a);
+	if (smallest->above_median)
+		while (*lst_a != smallest)
+			ft_rotate(lst_a);
+	else
+		while (*lst_a != smallest)
+			ft_reverse_rotate(lst_a);
 }

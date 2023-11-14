@@ -81,14 +81,24 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	}
 }
 
-void	ft_rotate_both(t_list ** lst_a, t_list **lst_b)
+void	ft_rotate_both(t_list **lst_a, t_list **lst_b, t_list *cheapest_node)
 {
-	ft_rotate(lst_a);
-	ft_rotate(lst_b);
+	while (*lst_a != cheapest_node->target && *lst_b != cheapest_node)
+	{
+		ft_rotate(lst_a);
+		ft_rotate(lst_b);
+	}
+	ft_set_current_position(*lst_a);
+	ft_set_current_position(*lst_b);
 }
 
-void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b)
+void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b, t_list *cheapest_node)
 {
-	ft_reverse_rotate(lst_a);
-	ft_reverse_rotate(lst_b);
+	while (*lst_a != cheapest_node->target && *lst_b != cheapest_node)
+	{
+		ft_reverse_rotate(lst_a);
+		ft_reverse_rotate(lst_b);
+	}
+	ft_set_current_position(*lst_a);
+	ft_set_current_position(*lst_b);
 }

@@ -22,8 +22,9 @@ typedef struct s_list
 {
 	int				content;
 	int				index;
-	int				a_price;
-	int				b_price;
+	int				above_median;
+//	int				a_price;
+//	int				b_price;
 	int				price;
 	struct s_list	*target;
 	struct s_list	*next;
@@ -43,8 +44,8 @@ void	ft_swap_first_and_last(t_list **list);
 
 void	ft_reverse_rotate(t_list **list);
 void	ft_rotate(t_list **list);
-void	ft_rotate_both(t_list **lst_a, t_list **lst_b);
-void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b);
+void	ft_rotate_both(t_list **lst_a, t_list **lst_b, t_list *cheapest_node);
+void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b, t_list *cheapest_node);
 
 
 char	**ft_split(char *str, char c);
