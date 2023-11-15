@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/13 18:37:16 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/15 19:48:46 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		ft_print_error();
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
-	size = ft_count_words(argv[1], ' ');
+	size = ft_count_words(argv[1], 32);
 	if (argc > 2)
 	{
 		a = ft_lstnew(ft_atol(argv[i]));
@@ -43,7 +43,7 @@ int	main(int argc, char **argv)
 	}
 	else if (argc == 2)
 	{
-		tab = ft_split(argv[1], ' ');
+		tab = ft_split(argv[1], 32);
 		if (!tab)
 			ft_print_error();
 		a = ft_lstnew(ft_atol(tab[0]));
@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
 	ft_print_list(b);
 	printf("\n");
 	printf("\n");
-	if (ft_lstsize(a) != 3 || ft_lstsize(a) != 5)
+	if (ft_lstsize(a) != 3)
 		ft_push_until_three_nodes_left(&a, &b);
 	printf("\n");
 /*	ft_set_index(a);
@@ -72,24 +72,21 @@ int	main(int argc, char **argv)
 	ft_find_target_node(a, b);
 	ft_find_cheapest_cost(a, b);
 	ft_is_list_sorted(&a);
-*/
 	printf("\nlist a\n");
 	ft_print_list(a);
 	ft_is_list_sorted(&a);
 	printf("\n");
 	printf("list b\n");
 	ft_print_list(b);
-	printf("\n\n");
+	printf("\n\n");*/
 //	ft_birdnest(&a, &b);
 //	ft_test(&a, &b);
-/*
 	printf("list a\n");
 	ft_print_list(a);
 	printf("\n");
 	printf("list b\n");
 	ft_print_list(b);
 	printf("\n");
-*/
 }
 
 /*
@@ -162,9 +159,12 @@ ft_push(&b, &a);
 ft_push(&b, &a);
 ft_push(&b, &a);
 ft_print_list(a);
+ft_clear_list(a);
+ft_clear_list(b);
 printf("- -\n");
 printf("a b\n\n");
 printf("---------------------------------------------------------------------------\n\n");
+}
 */
 // ----------------------------------------------- TESTS FUNCTIONS ----------------------------------------------- 
 

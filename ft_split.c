@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:48:05 by eltouma           #+#    #+#             */
-/*   Updated: 2023/10/04 16:24:45 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/15 15:29:17 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**ft_define_tab(char *str, char c)
 
 char	**ft_split(char *str, char c)
 {
-	int		i;
+	int	i;
 	int		j;
 	char	**tab;
 

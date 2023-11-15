@@ -32,6 +32,26 @@ t_list	*ft_find_min_node(t_list *node)
 	return (min_node);
 }
 
+t_list	*ft_find_min_price(t_list *node)
+{
+	int		min;
+	t_list	*min_price;
+
+	if (!node)
+		return (NULL);
+	min = INT_MAX;
+	while (node)
+	{
+		if (min > node->price)
+		{
+			min = node->price;
+			min_price = node;
+		}
+		node = node->next;
+	}
+	return (min_price);
+}
+
 int	ft_min(t_list *node)
 {
 	int	min;

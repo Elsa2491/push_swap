@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/13 18:13:14 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/15 19:47:33 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ typedef struct s_list
 {
 	int				content;
 	int				index;
-	int				a_price;
-	int				b_price;
-	int				total_price;
+	int				above_median;
+//	int				a_price;
+//	int				b_price;
+	int				price;
 	struct s_list	*target;
+	struct s_list	*previous;
 	struct s_list	*next;
 }		t_list;
 
@@ -35,6 +37,7 @@ void	ft_lstadd_back(t_list **list, int nb);
 void	ft_lstadd_front(t_list **list, t_list *new_node);
 void	ft_delete_last(t_list **list);
 void	ft_delete_first(t_list **list);
+void	ft_clear_list(t_list *node);
 void	ft_swap_first_values(t_list *node);
 void	ft_push(t_list **lst_from, t_list **lst_to_push);
 void	ft_print_list(t_list *node);
@@ -43,8 +46,8 @@ void	ft_swap_first_and_last(t_list **list);
 
 void	ft_reverse_rotate(t_list **list);
 void	ft_rotate(t_list **list);
-void	ft_rotate_both(t_list **lst_a, t_list **lst_b);
-void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b);
+void	ft_rotate_both(t_list **lst_a, t_list **lst_b, t_list *cheapest_node);
+void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b, t_list *cheapest_node);
 
 
 char	**ft_split(char *str, char c);
@@ -66,11 +69,14 @@ int		ft_max(t_list *node);
 
 void	ft_initialize_nodes(t_list *node_a, t_list *node_b);
 void	ft_set_current_position(t_list *node);
+int		ft_set_positive(int nb);
+void	ft_move_nodes(t_list **lst_a, t_list **lst_b);
 
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
 void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
 void	ft_set_index(t_list *node);
 t_list	*ft_find_min_node(t_list *node);
+t_list	*ft_find_min_price(t_list *node_b);
 int		ft_find_median(t_list *node);
 t_list	*ft_find_target_node(t_list *node_a, t_list *node_b);
 
