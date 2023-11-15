@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/14 16:57:21 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/15 19:47:33 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_lstadd_back(t_list **list, int nb);
 void	ft_lstadd_front(t_list **list, t_list *new_node);
 void	ft_delete_last(t_list **list);
 void	ft_delete_first(t_list **list);
+void	ft_clear_list(t_list *node);
 void	ft_swap_first_values(t_list *node);
 void	ft_push(t_list **lst_from, t_list **lst_to_push);
 void	ft_print_list(t_list *node);
