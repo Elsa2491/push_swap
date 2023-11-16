@@ -65,7 +65,8 @@ int		ft_is_list_sorted(t_list **lst);
 
 
 int		ft_min(t_list *node);
-int		ft_max(t_list *node);
+int		ft_max2(t_list *node);
+t_list		*ft_max(t_list *node);
 
 void	ft_initialize_nodes(t_list *node_a, t_list *node_b);
 void	ft_set_current_position(t_list *node);

@@ -23,21 +23,22 @@ int	ft_is_list_sorted(t_list **lst)
 	{
 		if (node->content > node->next->content)
 		{
-			printf ("la liste n'est pas triée\n");
+			printf ("la liste n'est pas triée ❌\n");
 			return (0);
 		}
 		node = node->next;
 	}
-	printf("la liste est triée\n");
+	printf("la liste est triée ✅\n");
 	return (1);
 }
+
 
 void	ft_sort_three(t_list **lst)
 {
 	int	max;
 	int	min;
 
-	max = ft_max(*lst);
+	max = ft_max2(*lst);
 	min = ft_min(*lst);
 	if ((*lst)->content == max)
 		ft_rotate(lst);

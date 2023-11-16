@@ -55,39 +55,28 @@ int	main(int argc, char **argv)
 			i += 1;
 		}
 	}
-	printf("list a\n");
+	printf("AVANT LE TRI\nlist a\n");
 	ft_print_list(a);
 	printf("\n");
 	printf("list b\n");
 	ft_print_list(b);
 	printf("\n");
 	printf("\n");
-	if (ft_lstsize(a) != 3)
-		ft_push_until_three_nodes_left(&a, &b);
+	if (!ft_is_list_sorted(&a))
+	{
+		if (ft_lstsize(a) == 3)
+			ft_sort_three(&a);
+	//	ft_push_swap(&a, &b);
+	}
+//	ft_clear_list(a);
 	printf("\n");
-/*	ft_set_index(a);
-
-	printf("Mediane de a : %d\n", ft_find_median(a));
-	printf("Mediane de b : %d\n", ft_find_median(b));
-	ft_find_target_node(a, b);
-	ft_find_cheapest_cost(a, b);
+	printf("\nAPRES LE TRI\nlist a\n");
+	ft_print_list(a);
+	printf("\n");
+	printf("list b\n");
+	ft_print_list(b);
+	printf("\n\n");
 	ft_is_list_sorted(&a);
-	printf("\nlist a\n");
-	ft_print_list(a);
-	ft_is_list_sorted(&a);
-	printf("\n");
-	printf("list b\n");
-	ft_print_list(b);
-	printf("\n\n");*/
-//	ft_birdnest(&a, &b);
-//	ft_test(&a, &b);
-	ft_clear_list(a);
-	printf("list a\n");
-	ft_print_list(a);
-	printf("\n");
-	printf("list b\n");
-	ft_print_list(b);
-	printf("\n");
 }
 
 /*
@@ -165,46 +154,4 @@ ft_clear_list(b);
 printf("- -\n");
 printf("a b\n\n");
 printf("---------------------------------------------------------------------------\n\n");
-}
-*/
-// ----------------------------------------------- TESTS FUNCTIONS ----------------------------------------------- 
-
-/*
-   int	main(void)
-   {
-   t_list *a;
-   t_list *b;
-   a = ft_lstnew(99);
-   b = NULL;
-   ft_lstadd_back(&a, 100);
-   ft_lstadd_back(&a, 525);
-   ft_lstadd_back(&a, -38);
-   ft_lstadd_back(&a, 10);
-   ft_lstadd_back(&a, 7);
-   ft_lstadd_back(&a, 42);
-   printf("a\n");
-   printf("-\n");
-   ft_print_list(a);
-   printf("\n");
-   printf("------------\n");
-   printf("b\n");
-   printf("-\n");
-   ft_print_list(b);
-   printf("\n\n");
-   printf("\n\nExec find_target_node\n");
-   printf("Tri de la liste en cours\n");
-   printf("\n---------------------------------------------------------------------------\n\n");
-//	printf("La mediane de a est : %ld\n", ft_find_median(a));
-ft_find_target_node(&a, &b);
-printf("a\n");
-printf("-\n");
-ft_print_list(a);
-printf("\n");
-printf("------------\n");
-printf("b\n");
-printf("-\n");
-ft_print_list(b);
-printf("last_node : %d\n", ft_lstlast(a)->content);
-printf("\n\n");
-}
- */
+}*/

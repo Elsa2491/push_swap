@@ -50,7 +50,7 @@ void	ft_print_list(t_list *node)
 		node = node->next;
 	}
 }
-
+/*
 void	ft_set_current_position(t_list *node)
 {
 	int	i;
@@ -114,4 +114,4 @@ t_list	*ft_return_cheapest(t_list *stack)
 		stack = stack->next;
 	}
 	return (NULL);
-}
+}*/
