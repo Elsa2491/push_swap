@@ -48,3 +48,17 @@ void	ft_sort_three(t_list **lst)
 	if ((*lst)->content != min)
 		ft_swap_first_values(*lst);
 }
+
+void	ft_sort_five(t_list **lst_a, t_list **lst_b)
+{
+	int	size_a;
+
+	size_a = ft_lstsize(*lst_a);
+	while (size_a > 3)
+	{
+		ft_initialize_nodes(*lst_a, *lst_b);
+		ft_finish_rotation(lst_a, ft_find_min_node(*lst_a), 'a');
+		ft_push(lst_a, lst_b);
+		size_a -= 1;
+	}
+}

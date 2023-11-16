@@ -22,6 +22,7 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	new_node->content = content;
 	new_node->index = 0;
+//	new_node->relative_to_median = 0;
 	new_node->above_median = 0;		// a verif si 0 ou 1
 	new_node->price = 0;
 	new_node->target = NULL;

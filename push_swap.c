@@ -50,68 +50,22 @@ void	ft_print_list(t_list *node)
 		node = node->next;
 	}
 }
-/*
-void	ft_set_current_position(t_list *node)
-{
-	int	i;
-	int	median;
 
-	i = 0;
-	median = ft_find_median(node);
-	if (!node)
-		return ;
-	while (node)
+void	ft_push_swap(t_list **lst_a, t_list **lst_b)
+{
+//	t_list	*smallest;
+	int		size_a;
+
+	size_a = ft_lstsize(*lst_a);
+	if (size_a == 5)
+		ft_sort_five(lst_a, lst_b);
+	else
 	{
-		node->index = i;
-		if (i <= median)
-			node->above_median = 1;
-		else
-			node->above_median = 0;
-//		printf("pour %d, above_median est %d\n", node->content, above_median);
-		node = node->next;
-		i += 1;
-	}
-}
-
-void	ft_initialize_nodes(t_list *node_a, t_list *node_b)
-{
-	ft_set_current_position(node_a);
-	ft_set_current_position(node_b);
-	ft_find_target_node(node_a, node_b);
-	ft_find_cheapest_cost(node_a, node_b);
-	ft_find_min_price(node_b);
-}
-
-void	finish_rotation(t_list **stack, t_list *top_node, char stack_name)
-{
-	while (*stack != top_node)
-	{
-		if (stack_name == 'a')
+		while (size_a > 3)
 		{
-			if (top_node->index < ft_find_median(*stack))
-				ft_rotate(stack);
-			else
-				ft_reverse_rotate(stack);
-		}
-		else if (stack_name == 'b')
-		{
-			if (top_node->index < ft_find_median(*stack))
-				ft_rotate(stack);
-			else
-				ft_reverse_rotate(stack);
+			ft_push(lst_a, lst_b);
+			size_a -= 1;
 		}
 	}
+		ft_sort_three(lst_a);
 }
-
-t_list	*ft_return_cheapest(t_list *stack)
-{
-	if (NULL == stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->price)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}*/

@@ -39,3 +39,24 @@ void	ft_rotate(t_list **list)
 	ft_swap_first_and_last(list);
 	ft_delete_first(list);
 }
+
+void	ft_finish_rotation(t_list **lst, t_list *node, char lst_name)
+{
+	while (*lst != node)
+	{
+		if (lst_name == 'a')
+		{
+			if (node->above_median)
+				ft_rotate(lst);
+			else
+				ft_reverse_rotate(lst);
+		}
+		else if (lst_name == 'b')
+		{
+			if (node->above_median)
+				ft_rotate(lst);
+			else
+				ft_reverse_rotate(lst);
+		}
+	}
+}

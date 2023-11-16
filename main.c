@@ -64,9 +64,10 @@ int	main(int argc, char **argv)
 	printf("\n");
 	if (!ft_is_list_sorted(&a))
 	{
-		if (ft_lstsize(a) == 3)
+		if (ft_lstsize(a) <= 3)
 			ft_sort_three(&a);
-	//	ft_push_swap(&a, &b);
+		else
+			ft_push_swap(&a, &b);
 	}
 //	ft_clear_list(a);
 	printf("\n");
