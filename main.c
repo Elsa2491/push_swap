@@ -81,6 +81,7 @@ int	main(int argc, char **argv)
 	printf("\n\n");*/
 //	ft_birdnest(&a, &b);
 //	ft_test(&a, &b);
+	ft_clear_list(a);
 	printf("list a\n");
 	ft_print_list(a);
 	printf("\n");

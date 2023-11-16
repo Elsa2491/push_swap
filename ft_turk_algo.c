@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/14 16:54:50 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/13 18:43:37 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,23 @@ t_list	*ft_find_target_node(t_list *node_a, t_list *node_b)
 
 	while (node_b)
 	{
-		max = INT_MAX;
-		current_a = node_a;
-		while (current_a)
+	max = INT_MAX;
+	current_a = node_a;
+	while (current_a)
+	{
+		if (current_a->content > node_b->content && current_a->content < max)
 		{
-			if (current_a->content > node_b->content && current_a->content < max)
-			{
-				max = current_a->content;
-				target_node = current_a;
-			}
-			current_a = current_a->next;
+			max = current_a->content;
+			target_node = current_a;
 		}
+//		printf("\ntarget_node de %d est %d\n", node_b->content, current_a->content);
+		current_a = current_a->next;
+	}
 		if (node_b->content > ft_max(node_a))
 			node_b->target = ft_find_min_node(node_a);
 		else
 			node_b->target = target_node;
-		printf("\ntarget_node de %d est %d\n", node_b->content, node_b->target->content);
-		node_b = node_b->next;
+		node_b = node_b->next; 
 	}
 	return (target_node);
 }
@@ -64,14 +64,14 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 	while (node_b)
 	{
 		node_b->target = ft_find_target_node(node_a, node_b);
-//		printf("\ntarget_node de %d est %d\n", node_b->content, node_b->target->content);
+		printf("\ntarget_node de %d est %d\n", node_b->content, node_b->target->content);
 		//node_b->b_price = node_b->index;
 		node_b->price = node_b->index;
 		if (node_b->index > median_b)
 		{
-			//	node_b->b_price = lst_b_size - node_b->index;
+		//	node_b->b_price = lst_b_size - node_b->index;
 			node_b->price = lst_b_size - node_b->index;
-			//	node_b->b_price *= -1;
+		//	node_b->b_price *= -1;
 		}
 		if (node_b->target->index <= median_a)
 			//node_b->a_price += node_b->target->index;
@@ -80,11 +80,11 @@ void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b)
 		{
 			//node_b->a_price += lst_a_size - node_b->target->index;
 			node_b->price += lst_a_size - node_b->target->index;
-			//	node_b->a_price *= -1;
+		//	node_b->a_price *= -1;
 		}
-		//		node_b->total_price = ft_set_positive(node_b->a_price) + ft_set_positive(node_b->b_price);
-		printf("price pour %d est %d\n", node_b->content, node_b->price);
-		//		printf("cost pour %d est %d\n", node_b->content, node_b->total_price);
+//		node_b->total_price = ft_set_positive(node_b->a_price) + ft_set_positive(node_b->b_price);
+		printf("cost pour %d est %d\n", node_b->content, node_b->price);
+//		printf("cost pour %d est %d\n", node_b->content, node_b->total_price);
 		node_b = node_b->next;
 	}
 }

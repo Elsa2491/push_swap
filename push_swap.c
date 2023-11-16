@@ -121,29 +121,20 @@ void	ft_move_nodes(t_list **lst_a, t_list **lst_b)
 	t_list	*cheapest_node;
 
 	cheapest_node = ft_return_cheapest(*lst_b);
-	if (cheapest_node->price && cheapest_node->above_median && cheapest_node->target->above_median)
+	if (cheapest_node->above_median && cheapest_node->target->above_median)
 	{
-		printf("cheapest_node->price 😍 == %d\n", cheapest_node->price);
-		printf("cheapest_node->above_median 😍 == %d\n", cheapest_node->above_median);
-		printf("cheapest_node->target->above_median 😍 == %d\n", cheapest_node->target->above_median);
+//		printf("cheapest_node->price 😍 == %d\n", cheapest_node->price);
+//		printf("cheapest_node->above_median 😍 == %d\n", cheapest_node->above_median);
+//		printf("cheapest_node->target->above_median 😍 == %d\n", cheapest_node->target->above_median);
 		ft_rotate_both(lst_a, lst_b, cheapest_node);
 	}
-	else if (cheapest_node->price && !(cheapest_node->above_median) && !(cheapest_node->target->above_median))
+	else if (!(cheapest_node->above_median) && !(cheapest_node->target->above_median))
 	{
-		printf("COUCOU PETITE PERRUCHE\n");
-		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->above_median));
-		printf("!cheapest_node->target->above_median 🫧 == %d\n", !(cheapest_node->target->above_median));
+//		printf("COUCOU PETITE PERRUCHE\n");
+//		printf("!cheapest_node->above_median 🫧 == %d\n", !(cheapest_node->above_median));
+//		printf("!cheapest_node->target->above_median 🫧 == %d\n", !(cheapest_node->target->above_median));
 		ft_reverse_rotate_both(lst_a, lst_b, cheapest_node);
 	}
-/*	else if (!(cheapest_node->above_median) || !(cheapest_node->target->above_median))
-	{
-		printf("COUCOU PETITE PERRUCHE\n");
-		printf("!cheapest_node->above_median *️⃣ == %d\n", !(cheapest_node->above_median));
-		printf("!cheapest_node->target->above_median *️⃣ == %d\n", !(cheapest_node->target->above_median));
-//		ft_rotate(lst_b);
-//		ft_reverse_rotate_both(lst_a, lst_b, cheapest_node);
-		ft_reverse_rotate(lst_a);
-	}*/
 	finish_rotation(lst_b, cheapest_node, 'b');
 	finish_rotation(lst_a, cheapest_node->target, 'a');
 	ft_push(lst_b, lst_a);
@@ -154,6 +145,8 @@ void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b)
 	t_list	*smallest;
 
 	size = ft_lstsize(*lst_a);
+	smallest = ft_find_min_node(*lst_a);
+	printf("smallest est : %d\nn", smallest->content);
 	if (size == 5)
 	{
 		printf("La taille de la liste est de 5, déso\n");
