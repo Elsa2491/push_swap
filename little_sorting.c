@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:37:47 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/17 18:28:25 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/17 20:08:22 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_sort_three(t_list **lst)
 		ft_rotate(lst);
 	else if (*lst < (*lst)->next && (*lst)->next == max)
 		ft_reverse_rotate(lst);
-	if (*lst != min)
-		ft_swap_first_values(*lst);
+	//if (*lst != min)
+	//	ft_swap_first_values(*lst);
 }
 
 /*
