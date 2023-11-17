@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/17 18:36:12 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/17 19:50:13 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 void	ft_swap_first_and_last(t_list **list)
 {
-	t_list	*avant_dernier;
-	t_list	*deuxieme;
+	t_list	*last_node;
 	t_list	*tmp;
+	t_list	*a;
+	t_list	*b;
 
-	tmp = ft_lstlast(*list);
-	avant_dernier = tmp->previous;
-	deuxieme = (*list)->next;
+	last_node = ft_lstlast(*list);
+	tmp = (*list);
+	a = last_node;
+	b = (*list);
+	a->next = tmp->next;
+	b->previous = last_node->previous;
 
-	(*list)->next = NULL;
 	tmp->previous = NULL;
-
-	(*list)->previous = avant_dernier;
-	tmp->next = deuxieme;
-
-	avant_dernier->next = *list;
-	deuxieme->previous = tmp;
-
-	tmp = avant_dernier->next;
-	(*list) = deuxieme->next;
-	
+	tmp->next = a->next;
+	last_node->next = NULL;
+	last_node->previous = b->previous;
+	b = last_node;
+	last_node = tmp;
 //	tmp = (*list)->content;
 //	(*list)->content = last_node->content;
 //	last_node->content = tmp;
