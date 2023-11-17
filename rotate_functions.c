@@ -15,12 +15,22 @@
 void	ft_swap_first_and_last(t_list **list)
 {
 	t_list	*last_node;
-	int		tmp;
+//	int		tmp;
+	t_list	*tmp;
 
 	last_node = ft_lstlast(*list);
-	tmp = (*list)->content;
-	(*list)->content = last_node->content;
-	last_node->content = tmp;
+//	tmp = (*list)->content;
+//	(*list)->content = last_node->content;
+//	last_node->content = tmp;
+	tmp = *list;
+	*list = last_node;
+	last_node = tmp;
+	(*list)->previous = NULL;
+	(*list)->next->previous = *list;
+	(*list)->next = tmp->next;
+	last_node->previous = tmp->previous;
+	last_node->next = NULL;	
+	last_node->previous->next = last_node;
 }
 
 void	ft_reverse_rotate(t_list **list)

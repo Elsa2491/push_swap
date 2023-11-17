@@ -67,5 +67,10 @@ void	ft_push_swap(t_list **lst_a, t_list **lst_b)
 			size_a -= 1;
 		}
 	}
-		ft_sort_three(lst_a);
+	ft_sort_three(lst_a);
+/*	while (*lst_b)
+	{
+		ft_initialize_nodes(*lst_a, *lst_b);
+		ft_move_nodes(lst_a, lst_b);
+	}*/
 }

@@ -53,7 +53,7 @@ void	ft_lstadd_back(t_list **list, int nb)
 		*list = new_node;
 	else
 		last_node->next = new_node;
-	new_node->index = last_node->index + 1;
+//	new_node->index = last_node->index + 1;
 	new_node->previous = last_node;
 }
 

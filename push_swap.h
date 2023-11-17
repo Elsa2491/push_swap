@@ -78,7 +78,7 @@ void	ft_move_nodes(t_list **lst_a, t_list **lst_b);
 
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
 void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
-void	ft_set_index(t_list *node);
+// void	ft_set_index(t_list *node);
 t_list	*ft_find_min_node(t_list *node);
 t_list	*ft_find_min_price(t_list *node_b);
 int		ft_find_median(t_list *node);
