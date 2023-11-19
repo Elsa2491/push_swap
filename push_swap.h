@@ -22,10 +22,12 @@ typedef struct s_list
 {
 	int				content;
 	int				index;
+	int				relative_to_median; // pas sur d'en avoir besoin. Poss de le remplacer par l'index dans ft_set_position_to_median
 	int				above_median;
 //	int				a_price;
 //	int				b_price;
 	int				price;
+	int				cheapest;		// a initialiser dans lstnew()
 	struct s_list	*target;
 	struct s_list	*previous;
 	struct s_list	*next;
@@ -61,25 +63,29 @@ char	**ft_define_tab(char *str, char c);
 
 int		ft_lstsize(t_list *node);
 void	ft_sort_three(t_list **lst);
+void	ft_sort_five(t_list **lst_a, t_list **lst_b);
 int		ft_is_list_sorted(t_list **lst);
 
 
 int		ft_min(t_list *node);
-int		ft_max(t_list *node);
+int		ft_max2(t_list *node);
+t_list		*ft_max(t_list *node);
 
 void	ft_initialize_nodes(t_list *node_a, t_list *node_b);
-void	ft_set_current_position(t_list *node);
+void	ft_set_position_relative_to_median(t_list *node);
 int		ft_set_positive(int nb);
 void	ft_move_nodes(t_list **lst_a, t_list **lst_b);
 
 void	ft_push_until_three_nodes_left(t_list **lst_a, t_list **lst_b);
 void	ft_find_cheapest_cost(t_list *node_a, t_list *node_b);
-void	ft_set_index(t_list *node);
+// void	ft_set_index(t_list *node);
 t_list	*ft_find_min_node(t_list *node);
 t_list	*ft_find_min_price(t_list *node_b);
 int		ft_find_median(t_list *node);
-t_list	*ft_find_target_node(t_list *node_a, t_list *node_b);
-
+void	ft_find_target_node(t_list *node_a, t_list *node_b);
+void	ft_push_swap(t_list **lst_a, t_list **lst_b);
+void	ft_initialize_nodes(t_list *node_a, t_list *node_b);
+void	ft_finish_rotation(t_list **lst, t_list *node, char lst_name);
 
 long	ft_atol(char *str);
 int		ft_handle_repetitions(t_list *node, int nb);

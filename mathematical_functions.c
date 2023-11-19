@@ -68,7 +68,27 @@ int	ft_min(t_list *node)
 	return (min);
 }
 
-int	ft_max(t_list *node)
+t_list	*ft_max(t_list *node)
+{
+	int	max;
+	t_list	*max_node;
+
+	if (!node)
+		return (0);
+	max = INT_MIN;
+	while (node)
+	{
+		if (max < node->content)
+		{
+			max = node->content;
+			max_node = node;
+		}
+		node = node->next;
+	}
+	return (max_node);
+}
+
+int	ft_max2(t_list *node)
 {
 	int	max;
 
