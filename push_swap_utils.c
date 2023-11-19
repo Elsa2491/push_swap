@@ -63,11 +63,7 @@ void	ft_lstadd_front(t_list **list, t_list *new_node)
 		return ;
 	new_node->next = *list;
 	new_node->target = NULL;
-<<<<<<< HEAD
 //	new_node->previous = NULL;
-=======
-	new_node->previous = NULL;
->>>>>>> refs/remotes/origin/main
 //	new_node->next->previous = new_node;
 	*list = new_node;
 }
