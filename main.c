@@ -65,6 +65,7 @@ int	main(int argc, char **argv)
 	if (!ft_is_list_sorted(&a))
 	{
 		if (ft_lstsize(a) <= 3)
+		//	ft_reverse_rotate(&a);
 			ft_sort_three(&a);
 		else
 			ft_push_swap(&a, &b);

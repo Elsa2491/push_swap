@@ -29,7 +29,7 @@ typedef struct s_list
 	int				price;
 	int				cheapest;		// a initialiser dans lstnew()
 	struct s_list	*target;
-	struct s_list	*previous;
+//	struct s_list	*previous;
 	struct s_list	*next;
 }		t_list;
 
