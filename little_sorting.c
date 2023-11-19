@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_three.c                                    :+:      :+:    :+:   */
+/*   little_sorting.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:37:47 by eltouma           #+#    #+#             */
-/*   Updated: 2023/10/18 17:02:13 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/17 20:08:22 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,22 @@ int	ft_is_list_sorted(t_list **lst)
 	return (1);
 }
 
+void	ft_sort_three(t_list **lst)
+{
+	t_list	*max;
+	t_list	*min;
 
+	max = ft_max(*lst);
+	min = ft_find_min_node(*lst);
+	if (*lst == max)
+		ft_rotate(lst);
+	else if (*lst < (*lst)->next && (*lst)->next == max)
+		ft_reverse_rotate(lst);
+	//if (*lst != min)
+	//	ft_swap_first_values(*lst);
+}
+
+/*
 void	ft_sort_three(t_list **lst)
 {
 	int	max;
@@ -48,6 +63,7 @@ void	ft_sort_three(t_list **lst)
 	if ((*lst)->content != min)
 		ft_swap_first_values(*lst);
 }
+*/
 
 void	ft_sort_five(t_list **lst_a, t_list **lst_b)
 {
