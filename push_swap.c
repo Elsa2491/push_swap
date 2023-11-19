@@ -53,7 +53,7 @@ void	ft_print_list(t_list *node)
 
 void	ft_push_swap(t_list **lst_a, t_list **lst_b)
 {
-//	t_list	*smallest;
+	t_list	*smallest;
 	int		size_a;
 
 	size_a = ft_lstsize(*lst_a);
@@ -68,9 +68,16 @@ void	ft_push_swap(t_list **lst_a, t_list **lst_b)
 		}
 	}
 	ft_sort_three(lst_a);
-/*	while (*lst_b)
+	while (*lst_b)
 	{
 		ft_initialize_nodes(*lst_a, *lst_b);
 		ft_move_nodes(lst_a, lst_b);
-	}*/
+	}
+	ft_set_position_relative_to_median(*lst_a);
+	smallest = ft_find_min_node(*lst_a);
+	if (smallest->index >= ft_find_median(*lst_a))
+		ft_rotate(lst_a);
+	else
+		while (*lst_a != smallest)
+			ft_reverse_rotate(lst_a);
 }
