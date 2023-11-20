@@ -1,15 +1,18 @@
-NAME = push_swap.a
-CFLAGS = -Wall -Wextra -Error
-SRC = 
+NAME = push_swap
+CFLAGS = -Wall -Wextra -Werror
+SRCS =	delete_functions.c ft_split.c handle_errors.c little_sorting.c main.c \
+	mathematical_functions.c push_swap.c push_swap_init.c push_swap_utils.c \
+	rotate_functions.c shift.c size_functions.c
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME):$(OBJS)
-	ar -rsc $(NAME) $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
+
 %.o:%.c
-	cc -I $(FLAGS) -o $@ -c $?
+	cc -I $(CFLAGS) -o $@ -c $?
 
 clean:
 	/bin/rm -f $(OBJS)
