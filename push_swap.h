@@ -24,12 +24,9 @@ typedef struct s_list
 	int				index;
 	int				relative_to_median; // pas sur d'en avoir besoin. Poss de le remplacer par l'index dans ft_set_position_to_median
 	int				above_median;
-//	int				a_price;
-//	int				b_price;
 	int				price;
 	int				cheapest;		// a initialiser dans lstnew()
 	struct s_list	*target;
-//	struct s_list	*previous;
 	struct s_list	*next;
 }		t_list;
 
