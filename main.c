@@ -6,12 +6,30 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/25 20:09:07 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/29 19:30:49 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+void	ft_set_rank(t_list **lst)
+{
+	t_list	*node;
+	int	i;
+
+	node = ft_find_min_node(*lst);
+	i = -1;
+	while (node)
+	{
+		node->rank = i += 1;
+		node->position = -1;
+		node->target = -1;
+		node->price_a = -1;
+		node->price_b = -1;
+		node = ft_find_min_node(*lst);
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -40,6 +58,7 @@ int	main(int argc, char **argv)
 			ft_lstadd_back(&a, ft_atol(argv[i]));
 			i += 1;
 		}
+//		ft_set_rank(&a);
 	}
 	else if (argc == 2)
 	{
@@ -55,6 +74,7 @@ int	main(int argc, char **argv)
 			i += 1;
 		}
 	}
+	ft_set_rank(&a);
 /*
 	printf("AVANT LE TRI\nlist a\n");
 	ft_print_list(a);
@@ -65,12 +85,12 @@ int	main(int argc, char **argv)
 	printf("\n");
 */
 	if (!ft_is_list_sorted(&a))
-	{
-		if (ft_lstsize(a) <= 3)
-			ft_sort_three(&a);
-		else
+//	{
+//		if (ft_lstsize(a) <= 5)
+//			ft_sort_three(&a);
+//		else
 			ft_push_swap(&a, &b);
-	}
+//	}
 
 	printf("\n");
 	printf("\nAPRES LE TRI\nlist a\n");

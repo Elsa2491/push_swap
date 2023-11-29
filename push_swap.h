@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/28 19:13:07 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/29 16:46:03 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,12 @@ void	ft_set_cheapest_node(t_list *node);
 void	ft_initialize_nodes(t_list *node_a, t_list *node_b);
 ////////////
 
-void	ft_get_position(t_list **lst_a, t_list **lst_b);
+void	ft_get_target(t_list **lst_a, t_list **lst_b);
 void	ft_init_position(t_list **lst);
-int	ft_find_target(t_list **lst_a, int rank, int target_rank, int target_pos);
+int	ft_get_target_pos(t_list **lst_a, int rank, int target_rank, int target_pos);
 void	ft_set_price(t_list **lst_a, t_list **lst_b);
 void	ft_less_move(t_list **lst_a, t_list **lst_b);
+void	ft_set_rank(t_list **lst);
 
 void	ft_exec(t_list **lsta_, t_list **lst_b, int cost_a, int cost_b);
 int	ft_set_lowest_position(t_list **lst);
@@ -105,7 +106,8 @@ void	ft_reverse_rotate(t_list **list);
 void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b, int *price_b, int *price_a);
 void	ft_rotate(t_list **list);
 void	ft_rotate_both(t_list **lst, t_list **lst_b, int *price_b, int *price_a);
-void	ft_finish_rotation(t_list **lst, t_list *node, char lst_name);
+void	ft_finish_rotation_a(t_list **lst, int price);
+void	ft_finish_rotation_b(t_list **lst, int price);
 
 t_list	*ft_find_cheapest_node(t_list *node);
 void	ft_move_nodes(t_list **lst_a, t_list **lst_b);

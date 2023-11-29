@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:30:05 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/25 21:13:48 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/29 15:35:49 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,11 @@ void	ft_print_list(t_list *node)
 
 void	ft_push_swap(t_list **lst_a, t_list **lst_b)
 {
-//	t_list	*smallest;
 	int		size_a;
 
 	size_a = ft_lstsize(*lst_a);
 	if (size_a <= 5)
 		ft_little_sorting(lst_a, lst_b);
 	else
-	{
 		ft_sort_more_than_five(lst_a, lst_b);
-	}
-/*	ft_sort_three(lst_a);
-	while (*lst_b)
-	{
-		ft_initialize_nodes(*lst_a, *lst_b);
-		ft_move_nodes(lst_a, lst_b);
-	}
-	ft_set_position_relative_to_median(*lst_a);
-	smallest = ft_find_min_node(*lst_a);
-	if (smallest->index >= ft_find_median(*lst_a))
-		ra(lst_a);
-	else
-		while (*lst_a != smallest)
-			rra(lst_a);
-*/
 }

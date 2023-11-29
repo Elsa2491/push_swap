@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:37:47 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/25 20:04:29 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/29 15:02:43 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,9 @@ void	ft_little_sorting(t_list **lst_a, t_list **lst_b)
 	int	size_a;
 
 	size_a = ft_lstsize(*lst_a);
-	if (size_a <= 3)
+	if (size_a == 2)
+		sa(*lst_a);
+	if (size_a == 3)
 		ft_sort_three(lst_a);
 	if (size_a == 4)
 		ft_sort_four(lst_a, lst_b);

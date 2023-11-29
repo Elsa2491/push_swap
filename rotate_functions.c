@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/24 17:57:14 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/29 19:30:27 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@ void	rb(t_list **lst_b)
 	write(1, "rb\n", 3);
 }
 
-void	ft_rotate_both(t_list **lst_a, t_list **lst_b, int *price_b, int *price_a)
+void	ft_rotate_both(t_list **lst_a, t_list **lst_b, int *price_a, int *price_b)
 {
-	ft_rotate(lst_a);
-	ft_rotate(lst_b);
-	*price_a -= 1;
-	*price_b -= 1;
-	write(1, "rr\n", 3);
+	while (*price_a > 0 && *price_b > 0)
+	{
+		*price_a -= 1;
+		*price_b -= 1;
+		ft_rotate(lst_a);
+		ft_rotate(lst_b);
+		write(1, "rr\n", 3);
+	}
 }

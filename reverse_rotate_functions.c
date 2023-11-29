@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:14:25 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/23 16:30:41 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/29 19:21:44 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,34 +36,46 @@ void	rrb(t_list **lst_b)
 
 void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b, int *price_b, int *price_a)
 {
-	ft_reverse_rotate(lst_a);
-	ft_reverse_rotate(lst_b);
-	*price_b -= 1;
-	*price_a -= 1;
-	write(1, "rrr\n", 4);
+	while (*price_a < 0 && *price_b < 0)
+	{
+		*price_b += 1;
+		*price_a += 1;
+		ft_reverse_rotate(lst_a);
+		ft_reverse_rotate(lst_b);
+		write(1, "rrr\n", 4);
+	}
 }
 
-void	ft_finish_rotation(t_list **lst, t_list *node, char lst_name)
+void	ft_finish_rotation_a(t_list **lst, int price)
 {
-	while (*lst != node)
+	while (price != 0)
 	{
-		while (lst_name == 'a')
+		if (price > 0)
 		{
-			if (*lst == node)
-				break ;
-			if (node->above_median)
-				ra(lst);
-			else
-				rra(lst);
+			ra(lst);
+			price -= 1;
 		}
-		while (lst_name == 'b')
+		else 
 		{
-			if (*lst == node)
-				break ;
-			if (node->above_median)
-				rb(lst);
-			else
-				rrb(lst);
+			rra(lst);
+			price += 1;
+		}
+	}
+}
+
+void	ft_finish_rotation_b(t_list **lst, int price)
+{
+	while (price != 0)
+	{
+		if (price > 0)
+		{
+			rb(lst);
+			price -= 1;
+		}
+		else 
+		{
+			rrb(lst);
+			price += 1;
 		}
 	}
 }
