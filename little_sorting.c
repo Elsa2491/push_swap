@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:37:47 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/20 19:39:24 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/29 15:02:43 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,51 +22,82 @@ int	ft_is_list_sorted(t_list **lst)
 	while (node->next != NULL)
 	{
 		if (node->content > node->next->content)
-//		{
-//			printf ("la liste n'est pas triée ❌\n");
 			return (0);
-//		}
 		node = node->next;
 	}
-//	printf("la liste est triée ✅\n");
 	return (1);
 }
 
 void	ft_sort_three(t_list **lst)
 {
-	t_list	*max;
-	t_list	*min;
+	int	max;
+	int	min;
 
-	max = ft_find_max_node(*lst);
-	min = ft_find_min_node(*lst);
-	if (*lst == max)
-	{
-		ft_rotate(lst);
-		printf("ra\n");
-	}
-	else if (*lst < (*lst)->next && (*lst)->next == max)
-	{
-		ft_reverse_rotate(lst);
-		printf("ra\n");
-	}
-	if (*lst != min)
-	{
-		ft_swap_first_values(*lst);
-		printf("sa\n");
-	}
+	if (!*lst)
+		return ;
+	max = ft_max(*lst);
+	min = ft_min(*lst);
+	if ((*lst)->content == max)
+		ra(lst);
+	if ((*lst)->content < (*lst)->next->content && (*lst)->next->content == max)
+		rra(lst);
+	if ((*lst)->content != min)
+		sa(*lst);
+}
+
+void	ft_sort_four(t_list **lst_a, t_list **lst_b)
+{
+	int	min;
+	int	distance;
+
+	min = ft_min(*lst_a);
+	distance = ft_get_distance_from_min(lst_a, min);
+	if (distance <= 2 && distance != 0)
+		ra(lst_a);
+	if (distance == 2)
+		ra(lst_a);
+	if (distance == 3)
+		rra(lst_a);
+	if (ft_is_list_sorted(lst_a))
+		return ;
+	pb(lst_a, lst_b);
+	ft_sort_three(lst_a);
+	pa(lst_b, lst_a);
 }
 
 void	ft_sort_five(t_list **lst_a, t_list **lst_b)
 {
+	int	min;
+	int	distance;
+
+	min = ft_min(*lst_a);
+	distance = ft_get_distance_from_min(lst_a, min);
+	if (distance <= 2 && distance != 0)
+		ra(lst_a);
+	if (distance == 2)
+		ra(lst_a);
+	if (distance == 3 || distance == 4)
+		rra(lst_a);
+	if (distance == 3)
+		rra(lst_a);
+	if (ft_is_list_sorted(lst_a))
+		return ;
+	pb(lst_a, lst_b);
+	ft_sort_four(lst_a, lst_b);
+	pa(lst_b, lst_a);
+}
+
+void	ft_little_sorting(t_list **lst_a, t_list **lst_b)
+{
 	int	size_a;
 
 	size_a = ft_lstsize(*lst_a);
-	while (size_a > 3)
-	{
-		ft_initialize_nodes(*lst_a, *lst_b);
-		ft_finish_rotation(lst_a, ft_find_min_node(*lst_a), 'a');
-		ft_push(lst_a, lst_b);
-		printf("pa\n");
-		size_a -= 1;
-	}
+	if (size_a == 2)
+		sa(*lst_a);
+	if (size_a == 3)
+		ft_sort_three(lst_a);
+	if (size_a == 4)
+		ft_sort_four(lst_a, lst_b);
+	if (size_a == 5)
+		ft_sort_five(lst_a, lst_b);
 }
