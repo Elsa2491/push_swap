@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:26:29 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/29 18:35:59 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/04 20:59:39 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
 		else
 			ra(lst_a);
 		i += 1;
+		size_a -= 1;
 	}
-	while (size_a - push > 5)
+	while (size_a > 5)
 	{
 		pb(lst_a, lst_b);
-		push += 1;
+		size_a -= 1;
 	}
 }
 
@@ -68,6 +69,7 @@ void	final_sort(t_list **lst_a)
 
 void	ft_sort_more_than_five(t_list **lst_a, t_list **lst_b)
 {
+ //	while (ft_lstsize(*lst_a) > 5)
 	ft_push_until_five_nodes_left(lst_a, lst_b);
 	ft_little_sorting(lst_a, lst_b); 
 	while (*lst_b)

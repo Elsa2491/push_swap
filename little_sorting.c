@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:37:47 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/29 15:02:43 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/11/30 16:35:27 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ int	ft_is_list_sorted(t_list **lst)
 	while (node->next != NULL)
 	{
 		if (node->content > node->next->content)
+		{
+//			printf ("la liste n'est pas triee ❌\n");
 			return (0);
+		}
 		node = node->next;
 	}
+//	printf("La liste est triee ❎\n");
 	return (1);
 }
 
