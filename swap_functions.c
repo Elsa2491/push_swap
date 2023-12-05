@@ -6,21 +6,22 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:26:55 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/25 19:13:15 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/04 22:36:08 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap_first_values(t_list *node)
+void	ft_swap_first_values(t_list **lst)
 {
-	int	tmp;
+	t_list	*tmp;
 
-	if (!node || node->next == NULL)
+	if (!*lst || !((*lst)->next))
 		return ;
-	tmp = node->content;
-	node->content = node->next->content;
-	node->next->content = tmp;
+	tmp = *lst;
+	*lst = (*lst)->next;
+	tmp->next = (*lst)->next;
+	(*lst)->next = tmp;
 }
 
 void	ft_swap_first_and_last(t_list **list)
@@ -41,8 +42,8 @@ void	ft_swap_first_and_last(t_list **list)
 	*list = last;
 }
 
-void	sa(t_list *node)
+void	sa(t_list **lst)
 {
-	ft_swap_first_values(node);
+	ft_swap_first_values(lst);
 	write(1, "sa\n", 3);
 }

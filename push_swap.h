@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/29 16:46:03 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/04 23:45:27 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		ft_get_distance_from_min(t_list **lst, int min);
 int		ft_find_median(t_list *node);
 int		ft_set_pos(int nb);
 
-void	ft_swap_first_values(t_list *node);
+void	ft_swap_first_values(t_list **node);
 void	ft_push(t_list **lst_from, t_list **lst_to_push);
 void	ft_print_list(t_list *node);
 void	ft_push_swap(t_list **lst_a, t_list **lst_b);
@@ -118,5 +118,5 @@ void	ra(t_list **lst_a);
 void	rb(t_list **lst_a);
 void	rra(t_list **lst_a);
 void	rrb(t_list **lst_a);
-void	sa(t_list *list);
+void	sa(t_list **list);
 #endif

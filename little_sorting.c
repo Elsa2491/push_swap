@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:37:47 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/30 16:35:27 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/04 22:30:08 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_sort_three(t_list **lst)
 	if ((*lst)->content < (*lst)->next->content && (*lst)->next->content == max)
 		rra(lst);
 	if ((*lst)->content != min)
-		sa(*lst);
+		sa(lst);
 }
 
 void	ft_sort_four(t_list **lst_a, t_list **lst_b)
@@ -97,7 +97,7 @@ void	ft_little_sorting(t_list **lst_a, t_list **lst_b)
 
 	size_a = ft_lstsize(*lst_a);
 	if (size_a == 2)
-		sa(*lst_a);
+		sa(lst_a);
 	if (size_a == 3)
 		ft_sort_three(lst_a);
 	if (size_a == 4)

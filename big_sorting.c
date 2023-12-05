@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:26:29 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/04 20:59:39 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/05 01:14:25 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
 {
-	t_list	*node;
+//	t_list	*node;
 	int		size_a;
-	int		push;
-	int		i;
+//	int		push;
+//	int		i;
 
 	size_a = ft_lstsize(*lst_a);
-	push = 0;
-	i = 0;
-	while (size_a > 10 && i < size_a && push < ft_find_median(*lst_a))
+//	push = 0;
+//	i = 0;
+/*	while (size_a > 10 && i < size_a && push < ft_find_median(*lst_a))
 	{
 		node = *lst_a;
 		if (node->rank <= ft_find_median(*lst_a))
@@ -34,11 +34,26 @@ void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
 			ra(lst_a);
 		i += 1;
 		size_a -= 1;
-	}
+	}*/
+//	int	median = ft_find_median(*lst_a);
+//	pb(lst_a, lst_b);
+//	size_a -= 1;
+//		node = *lst_b;
 	while (size_a > 5)
 	{
-		pb(lst_a, lst_b);
-		size_a -= 1;
+	//	node = *lst_b;
+	/*	node = *lst_a;
+		if (node->content == ft_max(*lst_a))
+			ra(lst_a);
+		if (node->rank <= ft_find_median(*lst_a))
+		{*/
+			pb(lst_a, lst_b);
+	//		if (node->rank <= ft_find_median(*lst_a))
+	//			rb(lst_b);
+			size_a -= 1;
+	//	}
+	//	else
+	//		ra(lst_a);
 	}
 }
 

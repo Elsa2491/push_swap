@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/30 17:21:12 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/05 00:26:08 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	ft_get_target_pos(t_list **lst_a, int rank, int target_rank, int target_pos)
 	node = *lst_a;
 	while (node)
 	{
-		if (node->rank > rank && node->rank < target_rank)
+		if (node->rank > rank  && node->rank < target_rank)
 		{
 			target_pos = node->position;
 			target_rank = node->rank;
 		}
 		node = node->next;
 	}
-	if (target_rank != ft_max(*lst_a)) // target_rank != INT_MAX?
+	if (target_rank != INT_MAX) // target_rank != INT_MAX?
 		return (target_pos);
 	node = *lst_a;
 	while (node)
@@ -66,7 +66,7 @@ void	ft_get_target(t_list **lst_a, t_list **lst_b)
 	target = 0;
 	while (node_b)
 	{
-		target = ft_get_target_pos(lst_a, node_b->rank, ft_max(*lst_a), target); // ou INT_MAX
+		target = ft_get_target_pos(lst_a, node_b->rank, INT_MAX, target); // ou INT_MAX
 		node_b->target = target;
 		node_b = node_b->next;
 	}	

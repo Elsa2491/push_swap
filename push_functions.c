@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:30:05 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/29 15:35:49 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/04 22:14:08 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_print_list(t_list *node)
 {
 	while (node)
 	{
-		printf("%d\n", node->content);
+		printf("%d\trank : %d\n", node->content, node->rank);
 		node = node->next;
 	}
 }
