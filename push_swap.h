@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/04 23:45:27 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/06 19:26:53 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,18 @@
 typedef struct s_list
 {
 	int				content;
-	int				index;
-	int				relative_to_median;
-// pas sur d'en avoir besoin. Poss de le remplacer par l'index dans ft_set_position_to_median
-	int				above_median;
 	int				price_a;
 	int				price_b;
 	int				price;
-	int				cheapest;
 	int				rank;
 	int				position;
 	int				target;
-// a initialiser dans lstnew()
-//	struct s_list	*target;
 	struct s_list	*next;
 }		t_list;
 
 void	ft_delete_last(t_list **list);
 void	ft_delete_first(t_list **list);
-void	ft_clear_list(t_list *node);
+void	ft_clear_list(t_list **lst);
 
 char	*ft_fill_tab(char *s, char c);
 void	*ft_free_tab(char **tab, int i);
@@ -103,7 +96,7 @@ int		ft_lstsize(t_list *node);
 
 void	ft_swap_first_and_last(t_list **list);
 void	ft_reverse_rotate(t_list **list);
-void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b, int *price_b, int *price_a);
+void	ft_rev_rotate_both(t_list **a, t_list **b, int *price_b, int *price_a);
 void	ft_rotate(t_list **list);
 void	ft_rotate_both(t_list **lst, t_list **lst_b, int *price_b, int *price_a);
 void	ft_finish_rotation_a(t_list **lst, int price);

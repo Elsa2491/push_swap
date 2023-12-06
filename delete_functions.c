@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/15 19:49:45 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/06 16:28:46 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,19 @@ void	ft_delete_first(t_list **list)
 	free(tmp);
 }
 
-void	ft_clear_list(t_list *node)
+void	ft_clear_list(t_list **lst)
 {
 	t_list	*first_node;
+	t_list	*tmp;
 
-	if (!node)
+	first_node = *lst;
+	if (!first_node)
 		return ;
-	while (node)
+	while (first_node)
 	{
-		first_node = node;
-		node = node->next;
+		tmp = first_node->next;
 		free(first_node);
+		first_node = tmp;
 	}
+	*lst = NULL;
 }

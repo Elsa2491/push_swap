@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/05 00:26:08 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/06 15:53:29 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	ft_get_target_pos(t_list **lst_a, int rank, int target_rank, int target_pos)
 	node = *lst_a;
 	while (node)
 	{
-		if (node->rank > rank  && node->rank < target_rank)
+		if (node->rank > rank && node->rank < target_rank)
 		{
 			target_pos = node->position;
 			target_rank = node->rank;
 		}
 		node = node->next;
 	}
-	if (target_rank != INT_MAX) // target_rank != INT_MAX?
+	if (target_rank != INT_MAX)
 		return (target_pos);
 	node = *lst_a;
 	while (node)
@@ -53,7 +53,6 @@ int	ft_get_target_pos(t_list **lst_a, int rank, int target_rank, int target_pos)
 		}
 		node = node->next;
 	}
-
 	return (target_pos);
 }
 
@@ -66,7 +65,7 @@ void	ft_get_target(t_list **lst_a, t_list **lst_b)
 	target = 0;
 	while (node_b)
 	{
-		target = ft_get_target_pos(lst_a, node_b->rank, INT_MAX, target); // ou INT_MAX
+		target = ft_get_target_pos(lst_a, node_b->rank, INT_MAX, target);
 		node_b->target = target;
 		node_b = node_b->next;
 	}	
@@ -95,22 +94,22 @@ void	ft_set_price(t_list **lst_a, t_list **lst_b)
 
 void	ft_less_move(t_list **lst_a, t_list **lst_b)
 {
-	t_list	*node_b;
+	t_list	*node;
 	int		price_max;
 	int		price_a;
 	int		price_b;
 
-	node_b = *lst_b;
+	node = *lst_b;
 	price_max = INT_MAX;
-	while (node_b)
+	while (node)
 	{
-		if (ft_set_pos(node_b->price_a) + ft_set_pos(node_b->price_b) < price_max)
+		if (ft_set_pos(node->price_a) + ft_set_pos(node->price_b) < price_max)
 		{
-			price_max = ft_set_pos(node_b->price_a) + ft_set_pos(node_b->price_b);
-			price_a = node_b->price_a;
-			price_b = node_b->price_b;
+			price_max = ft_set_pos(node->price_a) + ft_set_pos(node->price_b);
+			price_a = node->price_a;
+			price_b = node->price_b;
 		}
-		node_b = node_b->next;
+		node = node->next;
 	}
 	ft_exec(lst_a, lst_b, price_a, price_b);
 }

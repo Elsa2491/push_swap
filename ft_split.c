@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 12:48:05 by eltouma           #+#    #+#             */
-/*   Updated: 2023/11/20 17:22:04 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/06 16:51:47 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_fill_tab(char *s, char c)
 	char	*str;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	size = ft_count_size_of_word(s, c);
 	str = (char *)malloc(sizeof(char) * size + 1);
 	if (!str)

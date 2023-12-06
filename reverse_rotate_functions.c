@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:14:25 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/04 19:58:09 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/06 19:29:28 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,56 +34,21 @@ void	rrb(t_list **lst_b)
 	write(1, "rrb\n", 4);
 }
 
-void 	rrr(t_list **lst_a, t_list **lst_b)
+void	rrr(t_list **lst_a, t_list **lst_b)
 {
 	if (ft_lstsize(*lst_a) > 1)
 		ft_reverse_rotate(lst_a);
 	if (ft_lstsize(*lst_b) > 1)
 		ft_reverse_rotate(lst_b);
 	write(1, "rrr\n", 4);
-
 }
 
-void	ft_reverse_rotate_both(t_list **lst_a, t_list **lst_b, int *price_b, int *price_a)
+void	ft_rev_rotate_both(t_list **a, t_list **b, int *price_b, int *price_a)
 {
 	while (*price_a < 0 && *price_b < 0)
 	{
 		*price_b += 1;
 		*price_a += 1;
-		rrr(lst_a, lst_b);
-	}
-}
-
-void	ft_finish_rotation_a(t_list **lst, int price)
-{
-	while (price)
-	{
-		if (price > 0)
-		{
-			ra(lst);
-			price -= 1;
-		}
-		else if (price < 0) 
-		{
-			rra(lst);
-			price += 1;
-		}
-	}
-}
-
-void	ft_finish_rotation_b(t_list **lst, int price)
-{
-	while (price)
-	{
-		if (price > 0)
-		{
-			rb(lst);
-			price -= 1;
-		}
-		else if  (price < 0) 
-		{
-			rrb(lst);
-			price += 1;
-		}
+		rrr(a, b);
 	}
 }
