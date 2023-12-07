@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:26:55 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/04 22:36:08 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/07 16:27:40 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	ft_swap_first_and_last(t_list **list)
 void	sa(t_list **lst)
 {
 	ft_swap_first_values(lst);
-	write(1, "sa\n", 3);
+	ft_printf("sa\n");
 }

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:26:29 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/06 19:41:11 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:13:04 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
 		while (size_a > 5)
 		{
 			if (*lst_a < ft_find_min_node(*lst_b))
-				ft_reverse_rotate(lst_b);
+				rrb(lst_b);
 			pb(lst_a, lst_b);
 			size_a -= 1;
 		}

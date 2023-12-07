@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:30:05 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/04 22:14:08 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:43:18 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,13 @@ void	ft_push(t_list **lst_from, t_list **lst_to_push)
 void	pb(t_list **from_a, t_list **to_b)
 {
 	ft_push(from_a, to_b);
-	write(1, "pb\n", 3);
+	ft_printf("pb\n");
 }
 
 void	pa(t_list **from_b, t_list **to_a)
 {
 	ft_push(from_b, to_a);
-	write(1, "pa\n", 3);
-}
-
-void	ft_print_list(t_list *node)
-{
-	while (node)
-	{
-		printf("%d\trank : %d\n", node->content, node->rank);
-		node = node->next;
-	}
+	ft_printf("pa\n");
 }
 
 void	ft_push_swap(t_list **lst_a, t_list **lst_b)
