@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/07 18:43:40 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/12 16:55:29 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_list
 	int				price_a;
 	int				price_b;
 	int				price;
-	int				rank;
-	int				position;
+	int				final_index;
+	int				index;
 	int				target;
 	struct s_list	*next;
 }		t_list;
@@ -53,7 +53,7 @@ int		ft_get_distance_from_min(t_list **lst, int min);
 int		ft_find_median(t_list *node);
 int		ft_set_pos(int nb);
 
-void	ft_init_position(t_list **lst);
+void	ft_init_index(t_list **lst);
 void	ft_get_target(t_list **lst_a, t_list **lst_b);
 void	ft_set_price(t_list **lst_a, t_list **lst_b);
 void	ft_less_move(t_list **lst_a, t_list **lst_b);

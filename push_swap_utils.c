@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/07 18:09:47 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/12 16:17:23 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list	*ft_lstnew(int content)
 	if (!new_node)
 		return (NULL);
 	new_node->content = content;
-	new_node->rank = -1;
+	new_node->final_index = -1;
 	new_node->price_a = 0;
 	new_node->price_b = 0;
 	new_node->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/07 19:26:46 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:09:13 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*ft_find_min_node(t_list *node)
 	min_node = NULL;
 	while (node)
 	{
-		if (node->rank == -1 && (!tmp || min > node->content))
+		if (node->final_index == -1 && (!tmp || min > node->content))
 		{
 			min = node->content;
 			min_node = node;

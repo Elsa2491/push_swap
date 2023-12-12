@@ -6,13 +6,13 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/06 15:53:29 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:27:12 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_init_position(t_list **lst)
+void	ft_init_index(t_list **lst)
 {
 	t_list	*node;
 	int		i;
@@ -21,39 +21,39 @@ void	ft_init_position(t_list **lst)
 	i = 0;
 	while (node)
 	{
-		node->position = i;
+		node->index = i;
 		node = node->next;
 		i += 1;
 	}
 }
 
-int	ft_get_target_pos(t_list **lst_a, int rank, int target_rank, int target_pos)
+int	ft_get_target_idx(t_list **lst_a, int final_idx, int t_final_idx, int t_idx)
 {
 	t_list	*node;
 
 	node = *lst_a;
 	while (node)
 	{
-		if (node->rank > rank && node->rank < target_rank)
+		if (node->final_index > final_idx && node->final_index < t_final_idx)
 		{
-			target_pos = node->position;
-			target_rank = node->rank;
+			t_idx = node->index;
+			t_final_idx = node->final_index;
 		}
 		node = node->next;
 	}
-	if (target_rank != INT_MAX)
-		return (target_pos);
+	if (t_final_idx != INT_MAX)
+		return (t_idx);
 	node = *lst_a;
 	while (node)
 	{
-		if (node->rank < target_rank)
+		if (node->final_index < t_final_idx)
 		{
-			target_pos = node->position;
-			target_rank = node->rank;
+			t_idx = node->index;
+			t_final_idx = node->final_index;
 		}
 		node = node->next;
 	}
-	return (target_pos);
+	return (t_idx);
 }
 
 void	ft_get_target(t_list **lst_a, t_list **lst_b)
@@ -65,7 +65,7 @@ void	ft_get_target(t_list **lst_a, t_list **lst_b)
 	target = 0;
 	while (node_b)
 	{
-		target = ft_get_target_pos(lst_a, node_b->rank, INT_MAX, target);
+		target = ft_get_target_idx(lst_a, node_b->final_index, INT_MAX, target);
 		node_b->target = target;
 		node_b = node_b->next;
 	}	
@@ -82,9 +82,9 @@ void	ft_set_price(t_list **lst_a, t_list **lst_b)
 	size_b = ft_lstsize(*lst_b);
 	while (node_b)
 	{
-		node_b->price_b = node_b->position;
-		if (node_b->position > ft_find_median(*lst_b))
-			node_b->price_b = (size_b - node_b->position) * -1;
+		node_b->price_b = node_b->index;
+		if (node_b->index > ft_find_median(*lst_b))
+			node_b->price_b = (size_b - node_b->index) * -1;
 		node_b->price_a = node_b->target;
 		if (node_b->target > ft_find_median(*lst_a))
 			node_b->price_a = (size_a - node_b->target) * -1;

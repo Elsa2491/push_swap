@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 19:26:29 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/07 18:13:04 by eltouma          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:23:15 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
 	}
 }
 
-int	ft_set_lowest_position(t_list **lst)
+int	ft_set_lowest_index(t_list **lst)
 {
 	t_list	*node;
-	int		position;
+	int		index;
 
 	node = *lst;
-	position = 0;
-	while (node->rank != 0)
+	index = 0;
+	while (node->final_index != 0)
 	{
-		position += 1;
+		index += 1;
 		node = node->next;
 	}
-	return (position);
+	return (index);
 }
 
 void	final_sort(t_list **lst_a)
@@ -54,7 +54,7 @@ void	final_sort(t_list **lst_a)
 	int	size;
 
 	size = ft_lstsize(*lst_a);
-	lowest = ft_set_lowest_position(lst_a);
+	lowest = ft_set_lowest_index(lst_a);
 	if (lowest > ft_find_median(*lst_a))
 	{
 		while (lowest < size)
@@ -78,8 +78,8 @@ void	ft_sort_more_than_five(t_list **lst_a, t_list **lst_b)
 	ft_push_until_five_nodes_left(lst_a, lst_b);
 	while (*lst_b)
 	{
-		ft_init_position(lst_a);
-		ft_init_position(lst_b);
+		ft_init_index(lst_a);
+		ft_init_index(lst_b);
 		ft_get_target(lst_a, lst_b);
 		ft_set_price(lst_a, lst_b);
 		ft_less_move(lst_a, lst_b);
