@@ -43,7 +43,7 @@ void	ft_check_params(int argc, char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (!(argv[i][j] >= 48 && argv[i][j] <= 57))
+			if (!(argv[i][j] >= 48 && argv[i][j] <= 57) && argv[i][j] != 32)
 				ft_print_error();
 			j += 1;
 		}
