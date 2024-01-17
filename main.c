@@ -56,16 +56,16 @@ static void	ft_check_argc_more_than_two(int argc, char **argv, t_list **a)
 	int		i;
 
 	i = 1;
-	*a = ft_lstnew(ft_atol(argv[1], a));
+	*a = ft_lstnew(ft_atol(argv[1], a, NULL));
 	i = 2;
 	while (i < argc)
 	{
-		if (ft_handle_repetitions(*a, ft_atol(argv[i], a)))
+		if (ft_handle_repetitions(*a, ft_atol(argv[i], a, NULL)))
 		{
 			ft_clear_list(a);
 			ft_print_error();
 		}
-		ft_lstadd_back(a, ft_atol(argv[i], a));
+		ft_lstadd_back(a, ft_atol(argv[i], a, NULL));
 		i += 1;
 	}
 }
@@ -84,24 +84,24 @@ static void	ft_check_argc_equal_two(char **argv, t_list **a)
 		free(tab);
 		ft_print_error();
 	}
-	*a = ft_lstnew(ft_atol(tab[0], a));
+	*a = ft_lstnew(ft_atol(tab[0], a, tab));
 	free(tab[0]);
 	while (i < size)
 	{
-		if (ft_handle_repetitions(*a, ft_atol(tab[i], a)))
+		if (ft_handle_repetitions(*a, ft_atol(tab[i], a, NULL)))
 		{
 			free(tab[i]);
 			free(tab);
 			ft_clear_list(a);
 			ft_print_error();
 		}
-		ft_lstadd_back(a, ft_atol(tab[i], a));
+		ft_lstadd_back(a, ft_atol(tab[i], a, NULL));
 		free(tab[i]);
 		i += 1;
 	}
 	free(tab);
 }
-
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	t_list	*a;
