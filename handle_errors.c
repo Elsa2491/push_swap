@@ -12,9 +12,23 @@
 
 #include "push_swap.h"
 
+static void    ft_putstr_fd(char *s, int fd)
+{
+    int     i;
+
+    i = 0;
+    if (!s)
+        return ;
+    while (s[i] != '\0')
+    {
+        write(fd, &s[i], 1);
+        i += 1;
+    }
+}
+
 void	ft_print_error(void)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	exit (1);
 }
 
@@ -43,7 +57,10 @@ long	ft_atol(char *str)
 			ft_print_error();
 		i += 1;
 	}
-	return (base * sign);
+	base = base * sign;
+	if (base < INT_MIN || base > INT_MAX)
+			ft_print_error();
+	return (base);
 }
 
 int	ft_handle_repetitions(t_list *node, int nb)
