@@ -32,7 +32,7 @@ void	ft_print_error(void)
 	exit (1);
 }
 
-long	ft_atol(char *str)
+long	ft_atol(char *str, t_list **lst)
 {
 	int		i;
 	long	base;
@@ -59,7 +59,10 @@ long	ft_atol(char *str)
 	}
 	base = base * sign;
 	if (base < INT_MIN || base > INT_MAX)
-			ft_print_error();
+	{
+		ft_clear_list(lst);
+		ft_print_error();
+	}
 	return (base);
 }
 

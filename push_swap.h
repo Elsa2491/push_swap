@@ -43,7 +43,7 @@ int		ft_count_words(char *str, char c);
 int		ft_count_size_of_word(char *str, char c);
 char	**ft_split(char *str, char c);
 void	ft_print_error(void);
-long	ft_atol(char *str);
+long	ft_atol(char *str, t_list **lst);
 int		ft_handle_repetitions(t_list *node, int nb);
 
 int		ft_is_list_sorted(t_list **lst);
