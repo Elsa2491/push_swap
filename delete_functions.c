@@ -41,9 +41,11 @@ void	ft_clear_list(t_list **lst)
 	t_list	*first_node;
 	t_list	*tmp;
 
-	first_node = *lst;
-	if (!first_node)
+	if (!*lst)
 		return ;
+	first_node = *lst;
+//	if (!first_node)
+//		return ;
 	while (first_node)
 	{
 		tmp = first_node->next;

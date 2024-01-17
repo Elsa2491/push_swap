@@ -12,15 +12,16 @@
 
 #include "push_swap.h"
 
-void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
+static void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
 {
 	int		size_a;
-
+/*
 	size_a = ft_lstsize(*lst_a);
 	if (size_a <= 5)
 		ft_little_sorting(lst_a, lst_b);
 	else
 	{
+*/
 		size_a = ft_lstsize(*lst_a);
 		while (size_a > 5)
 		{
@@ -30,10 +31,10 @@ void	ft_push_until_five_nodes_left(t_list **lst_a, t_list **lst_b)
 			size_a -= 1;
 		}
 		ft_little_sorting(lst_a, lst_b);
-	}
+//	}
 }
 
-int	ft_set_lowest_index(t_list **lst)
+static int	ft_set_lowest_index(t_list **lst)
 {
 	t_list	*node;
 	int		index;
@@ -48,7 +49,7 @@ int	ft_set_lowest_index(t_list **lst)
 	return (index);
 }
 
-void	final_sort(t_list **lst_a)
+static void	final_sort(t_list **lst_a)
 {
 	int	lowest;
 	int	size;

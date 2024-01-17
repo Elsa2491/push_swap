@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	ft_set_final_index(t_list **lst)
+static void	ft_set_final_index(t_list **lst)
 {
 	t_list	*node;
 	int		i;
@@ -32,7 +32,7 @@ void	ft_set_final_index(t_list **lst)
 	}
 }
 
-void	ft_check_params(int argc, char **argv)
+static void	ft_check_params(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -43,7 +43,7 @@ void	ft_check_params(int argc, char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (!(argv[i][j] >= 48 && argv[i][j] <= 57) && argv[i][j] != 32)
+			if (!(argv[i][j] >= 48 && argv[i][j] <= 57) && argv[i][j] != '-' && argv[i][j] != 32)
 				ft_print_error();
 			j += 1;
 		}
@@ -51,7 +51,7 @@ void	ft_check_params(int argc, char **argv)
 	}
 }
 
-void	ft_check_argc_more_than_two(int argc, char **argv, t_list **a)
+static void	ft_check_argc_more_than_two(int argc, char **argv, t_list **a)
 {
 	int		i;
 
@@ -70,7 +70,7 @@ void	ft_check_argc_more_than_two(int argc, char **argv, t_list **a)
 	}
 }
 
-void	ft_check_argc_equal_two(char **argv, t_list **a)
+static void	ft_check_argc_equal_two(char **argv, t_list **a)
 {
 	char	**tab;
 	int		i;
@@ -114,8 +114,6 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	ft_check_params(argc, argv);
-	//	if (argc == 10000000)
-	//		return (1);
 	if (argc > 2)
 		ft_check_argc_more_than_two(argc, argv, &a);
 	if (argc == 2)
