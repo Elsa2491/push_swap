@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:59:03 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/12 16:37:33 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/18 18:47:28 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ long	ft_atol(char *str, t_list **lst, char **tab)
 	i = 0;
 	base = 0;
 	sign = 1;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i += 1;
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
@@ -60,12 +58,18 @@ long	ft_atol(char *str, t_list **lst, char **tab)
 	base = base * sign;
 	if (base < INT_MIN || base > INT_MAX)
 	{
-		//mft_clear_list(lst);
 		if (tab)
 		{
-			for(int i = 0; tab[i]; i++)
+			for(int i = 1; tab[i]; i++)
+			{
 				free(tab[i]);
+			}
 			free(tab);
+			ft_clear_list(lst);
+			ft_print_error();
+		}
+		else
+		{
 			ft_clear_list(lst);
 			ft_print_error();
 		}

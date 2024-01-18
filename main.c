@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/12 17:02:44 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/18 19:01:33 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	ft_check_params(int argc, char **argv)
 		j = 0;
 		while (argv[i][j] != '\0')
 		{
-			if (!(argv[i][j] >= 48 && argv[i][j] <= 57) && argv[i][j] != '-' && argv[i][j] != 32)
+			if (!(argv[i][j] >= 48 && argv[i][j] <= 57)
+			&& argv[i][j] != '-' && argv[i][j] != 32)
 				ft_print_error();
 			j += 1;
 		}
@@ -85,23 +86,30 @@ static void	ft_check_argc_equal_two(char **argv, t_list **a)
 		ft_print_error();
 	}
 	*a = ft_lstnew(ft_atol(tab[0], a, tab));
-	free(tab[0]);
+	if ((*a)->content < INT_MIN || (*a)->content > INT_MAX)
+        {
+                        free(tab[0]);
+                        free(tab);
+                        ft_print_error();
+        }
+	else
+		free(tab[0]);
 	while (i < size)
 	{
-		if (ft_handle_repetitions(*a, ft_atol(tab[i], a, NULL)))
+		if (ft_handle_repetitions(*a, ft_atol(tab[i], a, tab)))
 		{
 			free(tab[i]);
 			free(tab);
 			ft_clear_list(a);
 			ft_print_error();
 		}
-		ft_lstadd_back(a, ft_atol(tab[i], a, NULL));
+		ft_lstadd_back(a, ft_atol(tab[i], a, tab));
 		free(tab[i]);
 		i += 1;
 	}
 	free(tab);
 }
-#include <stdio.h>
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
@@ -109,9 +117,9 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (!argv)
+	if ((!argv) || (argc == 2 && !argv[1][0]))
 		ft_print_error();
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1)
 		return (1);
 	ft_check_params(argc, argv);
 	if (argc > 2)
