@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:59:03 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/19 15:24:00 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:28:12 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ void	ft_print_error(void)
 	exit (1);
 }
 
-static void	ft_check_overflow(long base, t_list **lst, char **tab)
+static void	ft_check_overflow(long base, t_list **lst, char **tab, int i)
 {
-	int	i;
-
-	i = 1;
 	if (base < INT_MIN || base > INT_MAX)
 	{
 		if (tab)
@@ -58,7 +55,7 @@ static void	ft_check_overflow(long base, t_list **lst, char **tab)
 	}
 }
 
-long	ft_atol(char *str, t_list **lst, char **tab)
+long	ft_atol(char *str, t_list **lst, char **tab, int j)
 {
 	int		i;
 	long	base;
@@ -82,7 +79,7 @@ long	ft_atol(char *str, t_list **lst, char **tab)
 		i += 1;
 	}
 	base = base * sign;
-	ft_check_overflow(base, lst, tab);
+	ft_check_overflow(base, lst, tab, j);
 	return (base);
 }
 

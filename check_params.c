@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/19 15:17:00 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/19 19:08:04 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,21 @@ void	ft_check_argc_more_than_two(int argc, char **argv, t_list **a)
 	int		i;
 
 	i = 1;
-	*a = ft_lstnew(ft_atol(argv[1], a, NULL));
+	*a = ft_lstnew(ft_atol(argv[1], a, NULL, 0));
 	i = 2;
 	while (i < argc)
 	{
-		if (ft_handle_repetitions(*a, ft_atol(argv[i], a, NULL)))
+		if (ft_handle_repetitions(*a, ft_atol(argv[i], a, NULL, i)))
 		{
 			ft_clear_list(a);
 			ft_print_error();
 		}
-		ft_lstadd_back(a, ft_atol(argv[i], a, NULL));
+		ft_lstadd_back(a, ft_atol(argv[i], a, NULL, i));
 		i += 1;
 	}
 }
 
-static	int	ft_check_if_first_param_overflow(char *str)
+static int	ft_check_if_first_param_overflow(char *str)
 {
 	int		i;
 	long	base;
@@ -73,7 +73,9 @@ static	int	ft_check_if_first_param_overflow(char *str)
 	}
 	base = sign * base;
 	if (base < INT_MIN || base > INT_MAX)
+	{
 		return (0);
+	}
 	return (1);
 }
 
@@ -84,14 +86,16 @@ static void	ft_fill_list_when_split(char **tab, int size, t_list **a)
 	i = 1;
 	while (i < size)
 	{
-		if (ft_handle_repetitions(*a, ft_atol(tab[i], a, tab)))
+		if (ft_handle_repetitions(*a, ft_atol(tab[i], a, tab, i)))
 		{
-			free(tab[i]);
+			while(tab[i])
+				free(tab[i++]);
 			free(tab);
+			ft_printf("test1\n");
 			ft_clear_list(a);
 			ft_print_error();
 		}
-		ft_lstadd_back(a, ft_atol(tab[i], a, tab));
+		ft_lstadd_back(a, ft_atol(tab[i], a, tab, i));
 		free(tab[i]);
 		i += 1;
 	}
@@ -111,7 +115,7 @@ void	ft_check_argc_equal_two(char **argv, t_list **a)
 		free(tab);
 		ft_print_error();
 	}
-	*a = ft_lstnew(ft_atol(tab[0], a, tab));
+	*a = ft_lstnew(ft_atol(tab[0], a, tab, 0));
 	free(tab[0]);
 	ft_fill_list_when_split(tab, size, a);
 	free(tab);

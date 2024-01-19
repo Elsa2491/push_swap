@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/19 13:47:53 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:24:21 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_count_words(char *str, char c);
 int		ft_count_size_of_word(char *str, char c);
 char	**ft_split(char *str, char c);
 void	ft_print_error(void);
-long	ft_atol(char *str, t_list **lst, char **tab);
+long	ft_atol(char *str, t_list **lst, char **tab, int j);
 int		ft_handle_repetitions(t_list *node, int nb);
 
 int		ft_is_list_sorted(t_list **lst);
