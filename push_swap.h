@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/12 16:55:29 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/19 12:41:40 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ typedef struct s_list
 	int				target;
 	struct s_list	*next;
 }		t_list;
+
+void	ft_check_params(int argc, char **argv);
+void	ft_check_argc_more_than_two(int argc, char **argv, t_list **a);
+void	ft_check_argc_equal_two(char **argv, t_list **a);
+
 
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_back(t_list **list, int nb);
