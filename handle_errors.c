@@ -6,30 +6,56 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:59:03 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/18 18:47:28 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:24:00 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void    ft_putstr_fd(char *s, int fd)
+static void	ft_putstr_fd(char *s, int fd)
 {
-    int     i;
+	int		i;
 
-    i = 0;
-    if (!s)
-        return ;
-    while (s[i] != '\0')
-    {
-        write(fd, &s[i], 1);
-        i += 1;
-    }
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i += 1;
+	}
 }
 
 void	ft_print_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit (1);
+}
+
+static void	ft_check_overflow(long base, t_list **lst, char **tab)
+{
+	int	i;
+
+	i = 1;
+	if (base < INT_MIN || base > INT_MAX)
+	{
+		if (tab)
+		{
+			while (tab[i])
+			{
+				free(tab[i]);
+				i += 1;
+			}
+			free(tab);
+			ft_clear_list(lst);
+			ft_print_error();
+		}
+		else
+		{
+			ft_clear_list(lst);
+			ft_print_error();
+		}
+	}
 }
 
 long	ft_atol(char *str, t_list **lst, char **tab)
@@ -56,24 +82,7 @@ long	ft_atol(char *str, t_list **lst, char **tab)
 		i += 1;
 	}
 	base = base * sign;
-	if (base < INT_MIN || base > INT_MAX)
-	{
-		if (tab)
-		{
-			for(int i = 1; tab[i]; i++)
-			{
-				free(tab[i]);
-			}
-			free(tab);
-			ft_clear_list(lst);
-			ft_print_error();
-		}
-		else
-		{
-			ft_clear_list(lst);
-			ft_print_error();
-		}
-	}
+	ft_check_overflow(base, lst, tab);
 	return (base);
 }
 

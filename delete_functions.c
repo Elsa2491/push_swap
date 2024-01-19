@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2023/12/06 16:28:46 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:42:06 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	ft_clear_list(t_list **lst)
 	if (!*lst)
 		return ;
 	first_node = *lst;
-//	if (!first_node)
-//		return ;
 	while (first_node)
 	{
 		tmp = first_node->next;

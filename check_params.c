@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/19 13:20:44 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:17:00 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,55 +51,37 @@ void	ft_check_argc_more_than_two(int argc, char **argv, t_list **a)
 	}
 }
 
-static long	ft_check_if_first_param_overflow(char *nptr)
+static	int	ft_check_if_first_param_overflow(char *str)
 {
-        int     i;
-        long    base;
-        int     sign;
+	int		i;
+	long	base;
+	int		sign;
 
-        i = 0;
-        base = 0;
-        sign = 1;
-        if (nptr[i] == '-' || nptr[i] == '+')
-        {
-                if (nptr[i] == '-')
-                        sign *= -1;
-                i += 1;
-        }
-        while (nptr[i] >= '0' && nptr[i] <= '9')
-        {
-                base = base * 10 + (nptr[i] - '0');
-                i += 1;
-        }
-        base = sign * base;
-        if (base < INT_MIN || base > INT_MAX)
-        {
-//		ft_printf("coucou petit overflow %lu\n", base);
-  //              ft_printf("reponse du code : non\n");
+	i = 0;
+	base = 0;
+	sign = 1;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i += 1;
+	}
+	while (str[i] >= 48 && str[i] <= 57)
+	{
+		base = base * 10 + (str[i] - 48);
+		i += 1;
+	}
+	base = sign * base;
+	if (base < INT_MIN || base > INT_MAX)
 		return (0);
-        }
-//	ft_printf("coucou %lu\n", base);
-        return (1);
+	return (1);
 }
 
-void	ft_check_argc_equal_two(char **argv, t_list **a)
+static void	ft_fill_list_when_split(char **tab, int size, t_list **a)
 {
-	char	**tab;
-	int		i;
-	int		size;
+	int	i;
 
 	i = 1;
-	if (!ft_check_if_first_param_overflow(argv[1]))
-		ft_print_error();
-	size = ft_count_words(argv[1], 32);
-	tab = ft_split(argv[1], 32);
-	if (!tab || size == 0)
-	{
-		free(tab);
-		ft_print_error();
-	}
-	*a = ft_lstnew(ft_atol(tab[0], a, tab));
-	free(tab[0]);
 	while (i < size)
 	{
 		if (ft_handle_repetitions(*a, ft_atol(tab[i], a, tab)))
@@ -113,5 +95,24 @@ void	ft_check_argc_equal_two(char **argv, t_list **a)
 		free(tab[i]);
 		i += 1;
 	}
+}
+
+void	ft_check_argc_equal_two(char **argv, t_list **a)
+{
+	char	**tab;
+	int		size;
+
+	if (!ft_check_if_first_param_overflow(argv[1]))
+		ft_print_error();
+	size = ft_count_words(argv[1], 32);
+	tab = ft_split(argv[1], 32);
+	if (!tab || size == 0)
+	{
+		free(tab);
+		ft_print_error();
+	}
+	*a = ft_lstnew(ft_atol(tab[0], a, tab));
+	free(tab[0]);
+	ft_fill_list_when_split(tab, size, a);
 	free(tab);
 }
