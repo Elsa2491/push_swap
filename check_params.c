@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/19 19:08:04 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/20 14:56:13 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,9 @@ static void	ft_fill_list_when_split(char **tab, int size, t_list **a)
 	{
 		if (ft_handle_repetitions(*a, ft_atol(tab[i], a, tab, i)))
 		{
-			while(tab[i])
+			while (tab[i])
 				free(tab[i++]);
 			free(tab);
-			ft_printf("test1\n");
 			ft_clear_list(a);
 			ft_print_error();
 		}
