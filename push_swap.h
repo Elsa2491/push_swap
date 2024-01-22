@@ -48,6 +48,7 @@ char	**ft_split(char *str, char c);
 void	ft_print_error(char **tab);
 long	ft_atol(char *str, t_list **lst, char **tab, int j);
 int		ft_handle_repetitions(t_list *node, int nb);
+void	ft_handle_sign(char *str, int *i, int *sign);
 
 int		ft_is_list_sorted(t_list **lst);
 void	ft_little_sorting(t_list **lst_a, t_list **lst_b);

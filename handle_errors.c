@@ -77,12 +77,7 @@ long	ft_atol(char *str, t_list **lst, char **tab, int j)
 	i = 0;
 	base = 0;
 	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i += 1;
-	}
+	ft_handle_sign(str, &i, &sign);
 	while (str[i] != '\0')
 	{
 		if (str[i] >= 48 && str[i] <= 57)
