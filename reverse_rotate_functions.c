@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_reverse_rotate(t_list **list)
+static void	ft_reverse_rotate(t_list **list)
 {
 	t_list	*new_node;
 

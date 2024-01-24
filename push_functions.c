@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_push(t_list **lst_from, t_list **lst_to_push)
+static void	ft_push(t_list **lst_from, t_list **lst_to_push)
 {
 	t_list	*tmp;
 
@@ -25,9 +25,7 @@ void	ft_push(t_list **lst_from, t_list **lst_to_push)
 		(*lst_to_push)->next = NULL;
 	}
 	else
-	{
 		ft_lstadd_front(lst_to_push, *lst_from);
-	}
 	*lst_from = tmp;
 }
 

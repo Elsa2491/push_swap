@@ -28,7 +28,7 @@ t_list	*ft_lstnew(int content)
 	return (new_node);
 }
 
-t_list	*ft_lstlast(t_list *node)
+static t_list	*ft_lstlast(t_list *node)
 {
 	if (!node)
 		return (NULL);

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-char	*ft_fill_tab(char *s, char c)
+static char	*ft_fill_tab(char *s, char c)
 {
 	int		i;
 	int		size;
@@ -34,7 +34,7 @@ char	*ft_fill_tab(char *s, char c)
 	return (str);
 }
 
-void	*ft_free_tab(char **tab, int i)
+static void	*ft_free_tab(char **tab, int i)
 {
 	int	j;
 
@@ -50,7 +50,7 @@ void	*ft_free_tab(char **tab, int i)
 	return (NULL);
 }
 
-char	**ft_define_tab(char *str, char c)
+static char	**ft_define_tab(char *str, char c)
 {
 	char	**tab;
 

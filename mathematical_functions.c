@@ -12,27 +12,6 @@
 
 #include "push_swap.h"
 
-/*void	ft_handle_sign(char *str, int *i, int *sign)
-{
-	if (str[*i] == '-' || str[*i] == '+')
-	{
-		if (str[*i] == '-')
-			*sign *= -1;
-		*i += 1;
-	}
-}
-
-void	ft_handle_sign_repetition(char **tab, int j)
-{
-	if (tab)
-	{
-		while (tab[j])
-			free(tab[j++]);
-		free(tab);
-		tab = NULL;
-	}
-}*/
-
 int	ft_find_median(t_list *node)
 {
 	return (ft_lstsize(node) / 2);

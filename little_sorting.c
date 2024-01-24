@@ -28,7 +28,7 @@ int	ft_is_list_sorted(t_list **lst)
 	return (1);
 }
 
-void	ft_sort_three(t_list **lst)
+static void	ft_sort_three(t_list **lst)
 {
 	int	max;
 	int	min;
@@ -45,7 +45,7 @@ void	ft_sort_three(t_list **lst)
 		sa(lst);
 }
 
-void	ft_sort_four(t_list **lst_a, t_list **lst_b)
+static void	ft_sort_four(t_list **lst_a, t_list **lst_b)
 {
 	int	min;
 	int	distance;
@@ -65,7 +65,7 @@ void	ft_sort_four(t_list **lst_a, t_list **lst_b)
 	pa(lst_b, lst_a);
 }
 
-void	ft_sort_five(t_list **lst_a, t_list **lst_b)
+static void	ft_sort_five(t_list **lst_a, t_list **lst_b)
 {
 	int	min;
 	int	distance;
