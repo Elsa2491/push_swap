@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:44:20 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/24 14:38:47 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:56:19 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		ft_handle_repetitions(t_list *node, int nb);
 
 void	ft_handle_sign_for_atol(char *str, int *i, int *sign);
 void	ft_handle_sign_repetition(char **tab, int j);
+void	ft_check_if_sign_or_space_at_the_beginning(char **argv);
 void	ft_check_if_sign_or_space_at_the_end(char **argv);
 
 int		ft_is_list_sorted(t_list **lst);

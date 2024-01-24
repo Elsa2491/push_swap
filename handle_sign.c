@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 14:22:47 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/24 14:39:28 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/24 15:01:48 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,19 @@ void	ft_handle_sign_repetition(char **tab, int j)
 	}
 }
 
+void	ft_check_if_sign_or_space_at_the_beginning(char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (argv[1][i] == 32)
+		i += 1;
+	if (argv[1][i] == '-' && (argv[1][i + 1] == 32 || argv[1][i + 1] == '\0'))
+		ft_print_error(NULL);
+	if (argv[1][i] == '+' && (argv[1][i + 1] == 32 || argv[1][i + 1] == '\0'))
+		ft_print_error(NULL);
+}
+
 void	ft_check_if_sign_or_space_at_the_end(char **argv)
 {
 	int	i;
@@ -48,10 +61,10 @@ void	ft_check_if_sign_or_space_at_the_end(char **argv)
 		while (argv[i][j] == 32)
 			j -= 1;
 		if (argv[i][j] == '+'
-		&& (argv[i][j + 1] == 32 || argv[i][j + 1] == '\0'))
+				&& (argv[i][j + 1] == 32 || argv[i][j + 1] == '\0'))
 			ft_print_error(NULL);
 		else if (argv[i][j] == '-'
-		&& (argv[i][j + 1] == 32 || argv[i][j + 1] == '\0'))
+				&& (argv[i][j + 1] == 32 || argv[i][j + 1] == '\0'))
 			ft_print_error(NULL);
 		j -= 1;
 	}
