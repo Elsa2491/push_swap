@@ -1,6 +1,6 @@
 NAME = push_swap
-PRINTF = ./includes/printf/libftprintf.a
-CFLAGS = -Wall -Wextra -Werror -g3
+PRINTF = ./printf/libftprintf.a
+CFLAGS = -Wall -Wextra -Werror
 SRCS =	delete_functions.c ft_split.c handle_errors.c little_sorting.c main.c \
 	mathematical_functions.c push_functions.c push_swap_init.c push_swap_utils.c \
 	reverse_rotate_functions.c rotate_functions.c size_functions.c \
@@ -13,7 +13,7 @@ OBJS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME):$(OBJS)
-	make -C "./includes/printf/"
+	make -C "./printf"
 	cc $(CFLAGS) $(OBJS) -Inc $(PRINTF) -o $(NAME)
 
 clean:
