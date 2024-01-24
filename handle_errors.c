@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 11:59:03 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/19 18:28:12 by eltouma          ###   ########.fr       */
+/*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
+/*   Updated: 2024/01/24 14:51:38 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_putstr_fd(char *s, int fd)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -77,16 +77,17 @@ long	ft_atol(char *str, t_list **lst, char **tab, int j)
 	i = 0;
 	base = 0;
 	sign = 1;
-	ft_handle_sign(str, &i, &sign);
+	ft_handle_sign_for_atol(str, &i, &sign);
 	while (str[i] != '\0')
 	{
 		if (str[i] >= 48 && str[i] <= 57)
 			base = base * 10 + (str[i] - 48);
 		else
 		{
+			ft_handle_sign_repetition(tab, j);
 			ft_clear_list(lst);
-			ft_print_error(tab);
-		}		
+			ft_print_error(NULL);
+		}
 		i += 1;
 	}
 	base = base * sign;

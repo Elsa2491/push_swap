@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mathematical_functions.c                           :+:      :+:    :+:   */
+/*   handle_sign.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 00:31:22 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/24 14:23:15 by eltouma          ###   ########.fr       */
+/*   Created: 2024/01/24 14:22:47 by eltouma           #+#    #+#             */
+/*   Updated: 2024/01/24 14:39:28 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*void	ft_handle_sign(char *str, int *i, int *sign)
+void	ft_handle_sign_for_atol(char *str, int *i, int *sign)
 {
 	if (str[*i] == '-' || str[*i] == '+')
 	{
@@ -31,16 +31,28 @@ void	ft_handle_sign_repetition(char **tab, int j)
 		free(tab);
 		tab = NULL;
 	}
-}*/
-
-int	ft_find_median(t_list *node)
-{
-	return (ft_lstsize(node) / 2);
 }
 
-int	ft_set_pos(int nb)
+void	ft_check_if_sign_or_space_at_the_end(char **argv)
 {
-	if (nb < 0)
-		nb *= -1;
-	return (nb);
+	int	i;
+	int	j;
+
+	i = 1;
+	j = 0;
+	while (argv[i][j] != '\0')
+		j += 1;
+	j -= 1;
+	while (j >= 0)
+	{
+		while (argv[i][j] == 32)
+			j -= 1;
+		if (argv[i][j] == '+'
+		&& (argv[i][j + 1] == 32 || argv[i][j + 1] == '\0'))
+			ft_print_error(NULL);
+		else if (argv[i][j] == '-'
+		&& (argv[i][j + 1] == 32 || argv[i][j + 1] == '\0'))
+			ft_print_error(NULL);
+		j -= 1;
+	}
 }

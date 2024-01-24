@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:18:01 by eltouma           #+#    #+#             */
-/*   Updated: 2024/01/20 14:56:13 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/01/24 14:41:22 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ void	ft_check_params(int argc, char **argv)
 	int		i;
 	int		j;
 
+	i = 0;
+	while (argv[1][i] == 32)
+		i += 1;
+	if (argv[1][i] == '-' && (argv[1][i + 1] == 32 || argv[1][i + 1] == '\0'))
+		ft_print_error(NULL);
+	if (argv[1][i] == '+' && (argv[1][i + 1] == 32 || argv[1][i + 1] == '\0'))
+		ft_print_error(NULL);
 	i = 1;
 	while (i < argc)
 	{
@@ -26,6 +33,7 @@ void	ft_check_params(int argc, char **argv)
 			if (!(argv[i][j] >= 48 && argv[i][j] <= 57)
 			&& argv[i][j] != '-' && argv[i][j] != '+' && argv[i][j] != 32)
 				ft_print_error(NULL);
+			ft_check_if_sign_or_space_at_the_end(argv);
 			j += 1;
 		}
 		i += 1;
